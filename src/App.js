@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './components/Home/Home';
-import UserPanel from './components/Reusables/UserPanel';
+import UserPanel from './components/Registration/UserPanel';
+import LogIn from './components/Registration/LogIn';
 import {
   HashRouter,
   Route,
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='userpanel' component={UserPanel} />
+          <Route path='login' component={LogIn} />
         </Switch>
         </>
       </HashRouter>

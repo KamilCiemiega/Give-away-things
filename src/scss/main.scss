@@ -6,8 +6,10 @@
 @import './settings/fonts';
 @import './settings/reset';
 @import './settings//mixins';
+@import './settings//flex';
 @import './components/columns';
 @import './components/homeEasySteps';
+@import './components/about';
 
 body{
     font-family: $font-base;

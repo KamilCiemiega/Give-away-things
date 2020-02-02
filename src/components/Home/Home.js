@@ -4,6 +4,7 @@ import Navigation from './HomeComponents/HomeNavigation';
 import Hero from './HomeComponents/HomeHero';
 import HomeThreeColumns from './HomeComponents/HomeThreeColmns';
 import HomeEasySteps from './HomeComponents/HomeEasySteps';
+import HomeAbout from './HomeComponents/HomeAbout';
 
 const home = (props) => {
     return (
@@ -14,6 +15,7 @@ const home = (props) => {
                 <Hero />
                 <HomeThreeColumns/>
                 <HomeEasySteps/>
+                <HomeAbout/>
             </div>
         </>
     );
