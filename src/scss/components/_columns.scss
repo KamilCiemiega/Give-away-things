@@ -1,0 +1,26 @@
+    .columns {
+        background-image: url(./../../assets/columns.png);
+        .container {
+            display: flex;
+            flex-direction: row;
+            .column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 44px;
+                font-weight: lighter;
+                text-align: center;
+                &__number {
+                    font-size: 4rem;
+                }
+                &__title {
+                    padding: 15px;
+                    font-size: 1.1rem;
+                }
+                &__description {
+                    letter-spacing: -0.32px;
+                }
+            }
+        }
+    }

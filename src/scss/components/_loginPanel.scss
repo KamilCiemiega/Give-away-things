@@ -1,0 +1,23 @@
+.loginPanel {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+    z-index: 1;
+    ul {
+        list-style: none;
+        li {
+            font-size: .8rem;
+            margin-left: 20px;
+            display: inline-block;
+            &:nth-child(2) {
+                padding: 5px;
+                border: .75px solid #FAD648;
+            }
+            .link {
+                text-decoration: none;
+                color: #737373;
+            }
+        }
+    }
+
+}

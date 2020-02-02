@@ -1,0 +1,65 @@
+.hero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    &__image {
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: 80vh;
+        width: 50vw;
+        background-image: url(./../../assets/Hero.png);
+        background-size: cover;
+        background-position-x: 98%;
+    }
+    &__emptySpace {
+        width: 50%;
+        height: 80vh;
+    }
+    &__welcomeBox {
+        display: flex;
+        text-align: center;
+        width: 50%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        margin-top: 7%;
+        h1,span {
+            color: #3C3C3C;
+            font-weight: normal;
+            font-size: 1.5rem;
+        }
+        &__decoration {
+            margin: 25px 0;
+            background-image: url(./../../assets/Decoration.svg);
+            height: 33px;
+            width: 253px;
+        }
+        &__btns {
+            display: flex;
+            font-size: 1.8rem;
+            font-weight: lighter;
+            .link {
+                text-decoration: none;
+                color: #3C3C3C;
+            }
+            div {
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                border: 1px solid #3C3C3C;
+                width: 195px;
+                height: 80px;
+                margin: 25px;
+                &:hover {
+                    transition: .2s;
+                    color: #f9cb16;
+                    background-color:#F0F1F1;
+                    border: #f9cb16;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+nav {
+    margin-top: 1%;
+    z-index: 1;
+    position: absolute;
+    top: 4%;
+    right: 5%;
+    li:first-child {
+        border: 1.2px solid #3C3C3C;
+        padding: 9px 20px;
+        &:hover {
+            color: #f9cb16;
+            background-color: #F0F1F1;
+            border: 1.2px solid #f9cb16;
+            transition: .1s;
+        }
+    }
+    li {
+        cursor: pointer;
+        font-size: 0.8rem;
+        list-style: none;
+        display: inline-block;
+        margin-left: 2rem;
+        &:hover {
+            color: #f9cb16;
+            padding-bottom: 10px;
+            transition: .2s;
+            border-bottom: 2px solid #f9cb16;
+        }
+        .link {
+            text-decoration: none;
+            color: #3C3C3C;
+        }
+    }
+}

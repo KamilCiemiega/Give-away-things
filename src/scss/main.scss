@@ -1,0 +1,14 @@
+@import './components/hero';
+@import './components/home';
+@import './components/loginPanel';
+@import './components/navigation';
+@import './settings/colors';
+@import './settings/fonts';
+@import './settings/reset';
+@import './settings//mixins';
+@import './components/columns';
+@import './components/homeEasySteps';
+
+body{
+    font-family: $font-base;
+}
