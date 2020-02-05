@@ -8,7 +8,7 @@ function Navigation() {
     return (
         <nav>
             <ul>
-                <li>
+                <li className="link"> 
                     <NavLink
                         to="/"
                         smooth={"true"}
@@ -18,7 +18,7 @@ function Navigation() {
                         Start
                     </NavLink>
                 </li>
-                <li>
+                <li className="link">
                     <Link
                         to="HomeEasySteps"
                         smooth={"true"}
@@ -28,7 +28,7 @@ function Navigation() {
                         O co chodzi?
                     </Link>
                 </li>
-                <li>
+                <li className="link">
                     <Link
                         to="about"
                         smooth={"true"}
@@ -39,7 +39,15 @@ function Navigation() {
                     </Link>
                 </li>
                 <li className="link">Fundacja i organizacje</li>
-                <li className="link">Kontakt</li>
+                <li className="link">
+                    <Link to="contact"
+                        smooth={"true"}
+                        offset={-70}
+                        duration={500}
+                        className="link">
+                        Kontakt
+                    </Link>
+                </li>
             </ul>
         </nav>
     )

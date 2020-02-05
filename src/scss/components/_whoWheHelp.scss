@@ -1,0 +1,46 @@
+.whowehelp__container{
+    @include centralize;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh;
+    .whowehelp__container__header{
+        @include centralize;
+        flex-direction: column;
+        width: 100%;
+        h1{
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+        &__img{
+            margin-top: 3%;
+            @include decoration;
+        }
+    }
+    .whowehelp__container__partners{
+        @include centralize;
+        width: 100%;
+        margin-top: 3%;
+        &__partner {
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            padding: 30px;
+            margin: 12px 10px;
+            border: 1px solid transparent;
+            &:hover, &:active {
+                outline-color: $hover;
+                border: 1px solid $hover;
+            }
+            &:focus {
+                outline-color: $hover;
+                outline-width: 1px;
+            }
+        }
+    }
+    .whowehelp__container__text{
+        width: 40%;
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 3%;
+    }
+}

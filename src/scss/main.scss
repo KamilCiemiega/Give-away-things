@@ -10,7 +10,8 @@
 @import './components/columns';
 @import './components/homeEasySteps';
 @import './components/about';
-
+@import './components/_whoWheHelp.scss';
+@import './components//homeContactForm';
 body{
     font-family: $font-base;
 }

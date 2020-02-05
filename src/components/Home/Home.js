@@ -5,6 +5,8 @@ import Hero from './HomeComponents/HomeHero';
 import HomeThreeColumns from './HomeComponents/HomeThreeColmns';
 import HomeEasySteps from './HomeComponents/HomeEasySteps';
 import HomeAbout from './HomeComponents/HomeAbout';
+import WhoWeHelp from '../WhoWeHelp';
+import HomeContactForm from './HomeComponents/HomeContactForm';
 
 const home = (props) => {
     return (
@@ -16,6 +18,8 @@ const home = (props) => {
                 <HomeThreeColumns/>
                 <HomeEasySteps/>
                 <HomeAbout/>
+                <WhoWeHelp/>
+                <HomeContactForm/>
             </div>
         </>
     );
