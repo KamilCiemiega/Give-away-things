@@ -1,0 +1,62 @@
+.logInPanel {
+    width: 100%;
+    height: 100vh;
+    @include centralize;
+    flex-direction: column;
+    &__header{
+        height: 150px;
+        margin-bottom: 2%;
+        @include centralize;
+        flex-direction: column;
+        h2{
+            margin-bottom: 4%;
+        }
+        &__img{
+            @include decoration;
+        }
+    }
+    .form__container {
+        .form__login {
+            background-color: $bg;
+            padding: 50px 80px;
+            flex-direction: column;
+            @include centralize;
+            label {
+                margin-right: 68%;;
+            }
+            input:first-of-type{
+                margin-bottom: 15%;
+            }
+            input {
+                font-size: 1rem;
+                background-color: $bg;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid $text;
+                margin: 12px;
+            }
+        }
+    }
+    .logInPanel__butons{
+        width: 450px;
+        height: 100px;
+        @include centralize;
+        justify-content: space-between;
+        button{
+            margin-top: 10%;
+            border: 1px solid #3C3C3C;
+            background: $bg2;
+            width: 80px;
+            height: 30px;
+            font-size: .8rem;
+            color: $text2;
+            cursor: pointer;
+                &:hover{
+                    transition: .2s;
+                    color: #f9cb16;
+                    background-color:#F0F1F1;
+                    border: #f9cb16;
+                }
+        }
+    }
+}

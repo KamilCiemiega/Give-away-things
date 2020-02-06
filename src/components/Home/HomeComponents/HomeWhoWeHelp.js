@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-export default class WhoWeHelp extends Component{
+export default class HomeWhoWeHelp extends Component{
 
 state= {
     page:1
