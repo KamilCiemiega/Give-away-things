@@ -113,7 +113,7 @@ export default class HomeContactForm extends Component {
                                     placeholder="Krzysztof@xyz.com"
                                     onChange={this.handleChange}
                                     ></input>
-                                    {this.state.isEmailOk ? "" : <div className="error">Podane emial jest nieprawidłowy </div> }
+                                    {this.state.isEmailOk ? "" : <div className="error">Podane email jest nieprawidłowy </div> }
 
                             </div>
                         </div>
