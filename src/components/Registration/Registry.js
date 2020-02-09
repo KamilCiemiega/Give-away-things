@@ -1,8 +1,58 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
 
 
 export default class Registry extends Component{
+
+    state = {
+        email: "",
+        password: "",
+        secondPassword:"",
+        isEmailOk:true,
+        isPasswordOk:true,
+        isSecondPasswordOk:true
+    }
+
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    validate = () => {
+        const isEmailOk = this.handleEmailChange(this.state.email)
+        const isPasswordOk = this.handlePasswordChange(this.state.password)
+        const isSecondPasswordOk = this.handleSecondPasswordChange(this.state.secondPassword,this.state.password)
+        
+        if(isEmailOk !== true){
+            this.setState({isEmailOk:false})
+        }
+        if(isPasswordOk !== true){
+            this.setState({isPasswordOk:false})
+        }
+        if(isSecondPasswordOk !== true){
+            this.setState({isSecondPasswordOk:false})
+        }
+    }
+
+    handleEmailChange = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    handlePasswordChange = (password) => {
+        if(password.length < 6) return false
+        return true
+    }
+
+    handleSecondPasswordChange = (secondPassword,password) => {
+        if(secondPassword.length < 6 || password != secondPassword){
+            return false
+        }
+        return true
+    }
+
     render(){
         return(
             <>
@@ -18,25 +68,31 @@ export default class Registry extends Component{
                             <input
                                 name='email'
                                 type='email'
-                                
+                                value={this.state.email}
+                                onChange={this.handleChange}
                             ></input>
+                            {this.state.isEmailOk ? "" : <div className="error">Podane email jest nieprawidłowy!</div> }
                             <label>Hasło</label>
                             <input
                                 name='password'
                                 type='password'
-                                
+                                value={this.state.password}
+                                onChange={this.handleChange}
                             ></input>
+                            {this.state.isPasswordOk ? "" : <div className="error">Podane hasło jest za krótkie</div> }
                             <label>Powórz hasło</label>
                             <input
-                                name='password'
+                                name='secondPassword'
                                 type='password'
-                                
+                                value={this.state.secondPassword}
+                                onChange={this.handleChange}
                             ></input>
+                            {this.state.isSecondPasswordOk ? "" : <div className="error">Hasła są różne!</div> }
                         </form>
                     </div>
                     <div className="registryPanel__butons flex">
-                        <button>załuż konto</button>
-                        <button>zaloguj się</button>
+                        <button onClick={this.validate}>załuż konto</button>
+                        <button><Link to="/logowanie">zaloguj się</Link></button>
                     </div>
                 </div>
             </>

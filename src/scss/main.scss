@@ -1,19 +1,22 @@
-@import './components/hero';
+@import './components/homeHero';
 @import './components/home';
-@import './components/loginPanel';
-@import './components/navigation';
+@import './components/homeLoginPanel';
+@import './components/homeNavigation';
 @import './settings/colors';
 @import './settings/fonts';
 @import './settings/reset';
 @import './settings//mixins';
 @import './settings//flex';
-@import './components/columns';
+@import './components/homeColumns';
 @import './components/homeEasySteps';
-@import './components/about';
-@import './components/whoWheHelp';
+@import './components/homeAbout';
+@import './components/homeWhoWheHelp';
 @import './components/homeContactForm';
 @import './components/logIn';
 @import './components//registry';
+@import './components/logout';
+@import './components//sectionTitle';
+
 body{
     font-family: $font-base;
 }

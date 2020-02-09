@@ -11,14 +11,6 @@
       }
 }
 
-@mixin regularBtn() {
-    border: none;
-    font-weight: lighter;
-    font-size: 1rem;
-    color: $text;
-    cursor: pointer;
-}
-
 @mixin borderBtn() {
     border: 1px solid $text;
     padding: 17px;
@@ -29,4 +21,5 @@
     background-image: url(./../../assets/Decoration.svg);
     height: 33px;
     width: 253px;
+    margin-bottom: 12%;
 }

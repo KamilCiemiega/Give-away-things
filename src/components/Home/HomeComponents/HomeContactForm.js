@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import SectionTitle from '../../SectionTitle/SectionTitle';
+
 
 export default class HomeContactForm extends Component {
 
@@ -87,8 +89,7 @@ export default class HomeContactForm extends Component {
                 <div className="contact__empty"></div>
                 <div className="contact__form">
                     <div className="contact__form__header flex">
-                    <h2>Skontaktuj się z nami</h2>
-                    <div className="contact__form__header__img"></div>
+                    <SectionTitle title="Skontaktuj się z nami"/>
                     {this.state.dataStatus === "success" && <div className="success">Wiadomość zostałą wysłana! wkrótce się skontaktujemy</div> }
                     </div>
                     <form className="flex" onSubmit={this.validate}>

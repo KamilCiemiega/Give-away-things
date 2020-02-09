@@ -1,0 +1,13 @@
+.steps{
+    @include centralize;
+    flex-direction: column;
+    width: 350px;
+    &__title {
+        padding-top: 28px;
+        font-size: 1.8rem;
+        margin-bottom: 5%;
+    }
+    &__decoration {
+        @include decoration;
+    }
+}

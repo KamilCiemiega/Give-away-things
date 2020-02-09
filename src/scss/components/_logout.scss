@@ -1,0 +1,19 @@
+.logout__panel{
+    width: 100%;
+    height: 100vh;
+    @include centralize;
+    flex-direction: column;
+    &__button{
+        border: 1px solid $text;
+        padding: 17px;
+        border-radius: 2px;
+        background: $bg2;
+        cursor: pointer;
+        &:hover{
+            background: $bg;
+            border: none;
+            color: $hover;
+            transition: .2s;
+        }
+    }
+}

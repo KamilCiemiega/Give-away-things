@@ -6,7 +6,7 @@ function LoginPanel() {
         <div className="loginPanel">
             <ul>
                 <li><Link className="link" to='/logowanie'>Zaloguj</Link></li>
-                <li><Link className="link" to='/userpanel'>Załóż konto</Link></li>
+                <li><Link className="link" to='/rejestracja'>Załóż konto</Link></li>
             </ul>
         </div>
     )

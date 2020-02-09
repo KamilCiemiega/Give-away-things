@@ -1,8 +1,8 @@
 import React from 'react';
 import Home from './components/Home/Home';
-import UserPanel from './components/Registration/UserPanel';
 import LogIn from './components/Registration/LogIn';
 import Registry from './components/Registration/Registry';
+import Logout from './components/Registration/Logout';
 import {
   HashRouter,
   Route,
@@ -16,9 +16,9 @@ function App() {
         <>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/userpanel' component={UserPanel} />
             <Route path='/logowanie' component={LogIn} />
             <Route path='/rejestracja' component={Registry} />
+            <Route path='/wylogowano' component={Logout} />
           </Switch>
         </>
       </HashRouter>
