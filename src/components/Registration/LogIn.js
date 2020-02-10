@@ -9,6 +9,7 @@ export default class LogIn extends Component {
         password: "",
         isEmailok:true,
         isPasswordok:true,
+        error:null
     }
     handleChange = e => {
         this.setState({
@@ -26,6 +27,22 @@ export default class LogIn extends Component {
         if(isPasswordok !== true){
             this.setState({isPasswordok:false})
         }
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const {isEmailOk,isPasswordOk,email,password,error} = this.state
+        if(isEmailOk && isPasswordOk){
+            this.props.firebase
+                .doCreateUserWithEmailAndPassword(email, password)
+                .then(authUser => {
+                    this.setState({ email, password});
+                    this.props.history.push('/')
+                })
+                .catch(error => {
+                    this.setState({ error });
+                });
+        }
+        console.log(error);
     }
 
     handleEmailChange = (email) => {
@@ -47,7 +64,7 @@ export default class LogIn extends Component {
                         <div className="logInPanel__header__img"></div>
                     </div>
                     <div className="form__container flex">
-                        <form className="form__login flex">
+                        <form className="form__login flex" onSubmit={this.handleSubmit}>
                             <label>Email</label>
                             <input
                                 name='email'

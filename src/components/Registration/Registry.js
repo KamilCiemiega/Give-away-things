@@ -11,7 +11,9 @@ export default class Registry extends Component{
         secondPassword:"",
         isEmailOk:true,
         isPasswordOk:true,
-        isSecondPasswordOk:true
+        isSecondPasswordOk:true,
+        isInvalid:false,
+        error:null
     }
 
     handleChange = e => {
@@ -34,6 +36,22 @@ export default class Registry extends Component{
         if(isSecondPasswordOk !== true){
             this.setState({isSecondPasswordOk:false})
         }
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const {isEmailOk,isPasswordOk,isSecondPasswordOk,email,password,error} = this.state
+        if(isEmailOk && isPasswordOk && isSecondPasswordOk){
+            this.props.firebase
+                .doCreateUserWithEmailAndPassword(email, password)
+                .then(authUser => {
+                    this.setState({ email, password});
+                    this.props.history.push('/')
+                })
+                .catch(error => {
+                    this.setState({ error });
+                });
+        }
+        console.log(error);
     }
 
     handleEmailChange = (email) => {
@@ -63,7 +81,7 @@ export default class Registry extends Component{
                         <div className="registryPanel__header__img"></div>
                     </div>
                     <div className="form__container flex">
-                        <form className="form__registry flex">
+                        <form className="form__registry flex" onSubmit={this.handleSubmit}>
                             <label>Email</label>
                             <input
                                 name='email'
@@ -91,7 +109,7 @@ export default class Registry extends Component{
                         </form>
                     </div>
                     <div className="registryPanel__butons flex">
-                        <button onClick={this.validate}>załuż konto</button>
+                        <button disabled={this.state.isInvalid} onClick={this.validate}>załuż konto</button>
                         <button><Link to="/logowanie">zaloguj się</Link></button>
                     </div>
                 </div>

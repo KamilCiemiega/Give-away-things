@@ -4,12 +4,29 @@ import Organizations from '../../../data/organizations.json';
 export default class HomeWhoWeHelp extends Component {
 
     state = {
-        page: 1
+        page: 1,
+        items: [],
+        description: ""
+    }
+
+    componentDidMount() {
+        this.fetchData('Fundacjom')
+    }
+
+    fetchData = (name) => {
+        fetch(`http://localhost:3005/organizations/?navName=${name}`)
+            .then(res => res.json())
+            .then(data => data[0])
+            .then(data => {
+                this.setState({
+                    items: data.foundations,
+                    description: data.description
+                })
+            })
     }
 
     buildList = () => {
-        let arr = Organizations.organizations.foundations;
-        const list = arr.map((element,index) => {
+        const list = this.state.items.map((element,index) => {
             return (
                 <div key={index} className="whowehelp__container__list">
                     <ul>
@@ -23,8 +40,8 @@ export default class HomeWhoWeHelp extends Component {
         return list
     }
 
-    componentDidMount = () => {
-        console.log(Organizations)
+    handleCHangeOrganization = (name) => () => {
+        this.fetchData(name)
     }
 
     render() {
@@ -35,19 +52,19 @@ export default class HomeWhoWeHelp extends Component {
                     <div className="whowehelp__container__header__img"></div>
                 </div>
                 <div className="whowehelp__container__partners flex">
-                    <button className="whowehelp__container__partners__partner">
-                        <span>{Organizations.organizations[0].navName}</span>
+                    <button onClick={this.handleCHangeOrganization('Fundacjom')} className="whowehelp__container__partners__partner">
+        <span>Fundacjom</span>
                     </button>
-                    <button className="whowehelp__container__partners__partner">
-                        <span>{Organizations.organizations[1].navName}</span>
+                    <button onClick={this.handleCHangeOrganization('Organizacjom pozarządowym')} className="whowehelp__container__partners__partner">
+                        <span>Organizacjom pozarządowym</span>
 
                     </button>
-                    <button className="whowehelp__container__partners__partner">
-                        <span>{Organizations.organizations[2].navName}</span>
+                    <button onClick={this.handleCHangeOrganization("Lokalnym zbiórkom")} className="whowehelp__container__partners__partner">
+                        <span>Lokalnym zbiórkom</span>
                     </button>
                 </div>
                 <div className="whowehelp__container__text flex">
-                    
+                    {this.buildList()}
                 </div>
             </div>
         );
