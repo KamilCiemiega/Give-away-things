@@ -40,9 +40,20 @@
         }
     }
     .whowehelp__container__text{
-        width: 40%;
-        font-size: 1rem;
-        text-align: center;
-        margin-top: 3%;
+        width: 100%;
+        flex-direction: column;
+        @include centralize;
+        &__description{
+            margin-bottom: 3%;
+        }
+        &__list{
+
+            li{
+                list-style: none;
+            }
+        }
+    }
+    .active{
+        background: green;
     }
 }
