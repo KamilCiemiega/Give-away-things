@@ -13,23 +13,21 @@ export default class HomeWhoWeHelp extends Component {
         this.fetchData('Fundacjom')
     }
 
-    fetchData = (name) => {
-        fetch(`http://localhost:3005/organizations/?navName=${name}`)
+    fetchData = (name, start =0, end = 3) => {
+        fetch(`http://localhost:3005/organizations/?fundacja=${name}&_start=${start}&_end=${end}`)
             .then(res => res.json())
-            .then(data => data[0])
             .then(data => {
                 this.setState({
-                    items: data.foundations,
-                    description: data.description
+                    items: data,
+               //     description: data.description
                 })
             })
     }
     nextPage = (pageNumber) => {
-        fetch(`http://localhost:3005/organizations/&page${pageNumber}`)
-        .then(res => res.json())
-        .then(data => {
-            this.setState({currentPage:pageNumber})
-        })
+        const name = "Fundacjom";
+        const start = 0;
+        const end = 2
+        this.fetchData('nazwaFundacji', 3,6)
     }
 
     paginantion = () => {

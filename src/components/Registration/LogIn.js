@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
+import { withFirebase } from '../Firebase/context';
 
-export default class LogIn extends Component {
+class LogIn extends Component {
 
     state = {
         email: "",
@@ -64,7 +65,7 @@ export default class LogIn extends Component {
                         <div className="logInPanel__header__img"></div>
                     </div>
                     <div className="form__container flex">
-                        <form className="form__login flex" onSubmit={this.handleSubmit}>
+                        <form className="form__login flex">
                             <label>Email</label>
                             <input
                                 name='email'
@@ -85,10 +86,14 @@ export default class LogIn extends Component {
                     </div>
                     <div className="logInPanel__butons flex">
                         <button><Link to="/rejestracja">załóż konto</Link></button>
-                        <button onClick={this.validate}>zaloguj się</button>
+                        <button onClick={this.validate, this.handleSubmit}>zaloguj się</button>
                     </div>
+                    {this.state.error && <p>{this.state.error.message}</p>}
                 </div>
             </>
         );
     }
 }
+
+export default withFirebase(LogIn);
+
