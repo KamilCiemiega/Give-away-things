@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
 import { withFirebase } from '../Firebase/context';
 
@@ -12,7 +12,6 @@ class Registry extends Component {
         isEmailOk: true,
         isPasswordOk: true,
         isSecondPasswordOk: true,
-        isInvalid: false,
         error: null
     }
 
@@ -48,6 +47,7 @@ class Registry extends Component {
                 .then(authUser => {
                     this.setState({ email, password });
                     this.props.history.push('/')
+                    console.log(authUser)
                 })
                 .catch(error => {
                     this.setState({ error });
@@ -135,4 +135,4 @@ class Registry extends Component {
 
 }
 
-export default withFirebase(Registry);
+export default  withRouter(withFirebase(Registry));

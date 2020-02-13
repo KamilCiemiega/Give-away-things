@@ -27,14 +27,14 @@ export default class HomeWhoWeHelp extends Component {
         const name = "Fundacjom";
         const start = 0;
         const end = 2
-        this.fetchData('nazwaFundacji', 3,6)
+        this.fetchData()
     }
 
     paginantion = () => {
         const pageLinks =[]
         const numberPages = Math.floor(this.state.items /3);
 
-        for(let i = 1; i <=  numberPages + 1; i++){
+        for(let i = 1; i <=this.state.items + 1; i++){
             let active = this.state.currentPage == i ? 'active' : '';
 
             pageLinks.push(<li className={active} key={i} onClick={() => this.nextPage(i)}><a href="#">{i}</a></li>)
@@ -69,13 +69,13 @@ export default class HomeWhoWeHelp extends Component {
                     <div className="whowehelp__container__header__img"></div>
                 </div>
                 <div className="whowehelp__container__partners flex">
-                    <button onClick={this.handleCHangeOrganization('Fundacjom')} className="whowehelp__container__partners__partner">
+                    <button  className="whowehelp__container__partners__partner">
                         <span>Fundacjom</span>
                     </button>
-                    <button onClick={this.handleCHangeOrganization('Organizacjom pozarządowym')} className="whowehelp__container__partners__partner">
+                    <button  className="whowehelp__container__partners__partner">
                         <span>Organizacjom pozarządowym</span>
                     </button>
-                    <button onClick={this.handleCHangeOrganization("Lokalnym zbiórkom")} className="whowehelp__container__partners__partner">
+                    <button className="whowehelp__container__partners__partner">
                         <span>Lokalnym zbiórkom</span>
                     </button>
                 </div>

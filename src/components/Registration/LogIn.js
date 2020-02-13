@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
 import { withFirebase } from '../Firebase/context';
 
@@ -95,5 +95,5 @@ class LogIn extends Component {
     }
 }
 
-export default withFirebase(LogIn);
+export default withRouter(withFirebase(LogIn));
 
