@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Organizations from '../../../data/organizations.json';
+import organizations from '../../../data/organizations.json';
+import { withFirebase } from '../../Firebase/context';
 
-export default class HomeWhoWeHelp extends Component {
+
+class HomeWhoWeHelp extends Component {
 
     state = {
         items: [],
@@ -9,9 +11,16 @@ export default class HomeWhoWeHelp extends Component {
         currentPage:1
     }
 
-    componentDidMount() {
+    componentDidMount(){
         this.fetchData('Fundacjom')
+        let ref = this.props.firebase.data();
+        console.log(ref);
+        // ref.on('value',this.getData())
     }
+
+    // getData = (data) => {
+        
+    // }
 
     fetchData = (name, start =0, end = 3) => {
         fetch(`http://localhost:3005/organizations/?fundacja=${name}&_start=${start}&_end=${end}`)
@@ -92,3 +101,5 @@ export default class HomeWhoWeHelp extends Component {
         );
     }
 }
+
+export default withFirebase(HomeWhoWeHelp)

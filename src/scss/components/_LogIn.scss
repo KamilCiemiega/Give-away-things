@@ -6,7 +6,6 @@
     &__header{
         height: 150px;
         margin-top: 10%;
-        margin-bottom: 2%;
         @include centralize;
         flex-direction: column;
         h2{
@@ -19,13 +18,13 @@
     .form__container {
         .form__login {
             background-color: $bg;
-            padding: 50px 80px;
+            width: 380px;
+            height: 280px;
+            margin-bottom: 15%;
             flex-direction: column;
             @include centralize;
             label {
-                margin-right: 80%;;
-            }
-            label:nth-child(2){
+                margin-right: 40%;
                 margin-top: 10%;
             }
             input {
@@ -38,13 +37,12 @@
         }
     }
     .logInPanel__butons{
-        margin-bottom: 2%;
-        width: 450px;
-        height: 100px;
+        width: 100%;
+        height: 100%;
         @include centralize;
-        justify-content: space-between;
+        justify-content: space-around;
         button{
-            margin-top: 10%;
+            margin-top: 12%;
             border: 1px solid #3C3C3C;
             background: $bg2;
             width: 80px;
@@ -52,6 +50,18 @@
             font-size: .8rem;
             color: $text2;
             cursor: pointer;
+            &:disabled{
+                background-color: $errorFetch;
+                border: 1px solid ;
+                color:$errorFetch2;
+                cursor: not-allowed;                   
+                &:disabled:hover{
+                    border:none;
+                    background-color: $errorFetch;
+                    color:$errorFetch2;
+                    cursor: not-allowed;
+                }
+            }
                 &:hover{
                     transition: .2s;
                     color: #f9cb16;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link,withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
 import { withFirebase } from '../Firebase/context';
 
@@ -8,35 +8,39 @@ class LogIn extends Component {
     state = {
         email: "",
         password: "",
-        isEmailok:true,
-        isPasswordok:true,
-        error:null
+        isEmailok: true,
+        isPasswordok: true,
+        error: ""
     }
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            isEmailOk: true,
+            isPasswordOk: true,
+            isSecondPasswordOk: true
         })
     }
 
     validate = () => {
         const isEmailok = this.handleEmailChange(this.state.email)
         const isPasswordok = this.handlePasswordChange(this.state.password)
-        
-        if(isEmailok !== true){
-            this.setState({isEmailok:false})
+
+        if (isEmailok !== true) {
+            this.setState({ isEmailok: false })
         }
-        if(isPasswordok !== true){
-            this.setState({isPasswordok:false})
+        if (isPasswordok !== true) {
+            this.setState({ isPasswordok: false })
         }
     }
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        const {isEmailOk,isPasswordOk,email,password,error} = this.state
-        if(isEmailOk && isPasswordOk){
+        await this.validate(e)
+        const { isEmailOk, isPasswordOk, email, password, error } = this.state
+        if (isEmailOk && isPasswordOk) {
             this.props.firebase
-                .doCreateUserWithEmailAndPassword(email, password)
+                .doSignInWithEmailAndPassword(email, password)
                 .then(authUser => {
-                    this.setState({ email, password});
+                    this.setState({ email, password });
                     this.props.history.push('/')
                 })
                 .catch(error => {
@@ -45,6 +49,11 @@ class LogIn extends Component {
         }
         console.log(error);
     }
+    blockSubmit = () => {
+        const { isEmailOk, isPasswordOk } = this.state
+        return isEmailOk && isPasswordOk
+         
+    }
 
     handleEmailChange = (email) => {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -52,7 +61,7 @@ class LogIn extends Component {
     }
 
     handlePasswordChange = (password) => {
-        if(password.length < 6) return false
+        if (password.length < 6) return false
         return true
     }
     render() {
@@ -65,7 +74,10 @@ class LogIn extends Component {
                         <div className="logInPanel__header__img"></div>
                     </div>
                     <div className="form__container flex">
-                        <form className="form__login flex">
+                        <form className="form__login flex" onSubmit={(e) => {
+                            this.validate(e);
+                            this.handleSubmit(e)
+                        }}>
                             <label>Email</label>
                             <input
                                 name='email'
@@ -73,7 +85,7 @@ class LogIn extends Component {
                                 value={this.state.email}
                                 onChange={this.handleChange}
                             ></input>
-                            {this.state.isEmailok ? "" : <div className="error">Podany email jest nieprawidłowy</div> }
+                            {this.state.isEmailok ? "" : <div className="error">Podany email jest nieprawidłowy</div>}
                             <label>Hasło</label>
                             <input
                                 name='password'
@@ -81,12 +93,16 @@ class LogIn extends Component {
                                 value={this.state.password}
                                 onChange={this.handleChange}
                             ></input>
-                            {this.state.isPasswordok ? "" : <div className="error">Podane hasło jest za krótkie</div> }
+                            {this.state.isPasswordok ? "" : <div className="error">Podane hasło jest za krótkie</div>}
+                            <div className="logInPanel__butons flex">
+                                <button><Link to="/rejestracja">załóż konto</Link></button>
+                                <button
+                                    disabled={!this.blockSubmit()}
+                                    type="submit">
+                                    zaloguj się
+                                </button>
+                            </div>
                         </form>
-                    </div>
-                    <div className="logInPanel__butons flex">
-                        <button><Link to="/rejestracja">załóż konto</Link></button>
-                        <button onClick={this.validate, this.handleSubmit}>zaloguj się</button>
                     </div>
                     {this.state.error && <p>{this.state.error.message}</p>}
                 </div>

@@ -6,7 +6,6 @@
     &__header{
         height: 150px;
         margin-top: 10%;
-        margin-bottom: 2%;
         @include centralize;
         flex-direction: column;
         h2{
@@ -19,14 +18,20 @@
     .form__container {
         .form__registry {
             background-color: $bg;
-            padding: 50px 80px;
+            width: 400px;
+            height: 350px;
             flex-direction: column;
+            margin-bottom: 15%;
             @include centralize;
             label {
-                margin-right: 77%;
+                margin-right: 38%;
+                margin-top: 5%;
+            }
+            label:first-of-type{
+                margin-top: 0;
             }
             label:last-of-type{
-                margin-right: 48%;
+                margin-right: 24%;
             }
             input {
                 font-size: 1rem;
@@ -36,15 +41,24 @@
                 border-bottom: 1px solid $text;
             }
         }
+        .errors{
+            width: 380px;
+            padding: 4%;
+            font-weight: bold;
+            font-size: .8rem;
+            border-radius: 5px;
+            background: $errorFetch;
+            color: $errorFetch2;
+            text-align: center;
+            margin-bottom: 3%;
+        }
     }
     .registryPanel__butons{
-        margin-bottom: 2%;
-        width: 450px;
-        height: 100px;
+        margin-top: 12%;
+        width: 100%;
         @include centralize;
-        justify-content: space-between;
-        button{
-            margin-top: 10%;
+        justify-content: space-around;
+        button{          
             border: 1px solid #3C3C3C;
             background: $bg2;
             width: 80px;
@@ -53,24 +67,31 @@
             color: $text2;
             cursor: pointer;
                 &:disabled{
-                    background-color: #AC9980;
-                    border: 1px solid #7E7365;
-                    color: #ccc;
-                    cursor: default;  
+                    background-color: $errorFetch;
+                    border: 1px solid ;
+                    color:$errorFetch2;
+                    cursor: not-allowed;                   
+                    &:disabled:hover{
+                        border:none;
+                        background-color: $errorFetch;
+                        color:$errorFetch2;
+                        cursor: not-allowed;
+                    }
                 }
                 &:hover{
                     transition: .2s;
-                    color: #f9cb16;
+                    color: $hover;
                     background-color:#F0F1F1;
-                    border: #f9cb16;
+                    border: $hover;
                 }
         }
     }
+    
     .error{
         width: 200px;
         border-top: 1px solid #ff0000 !important;
         font-size: .8rem;
-        color: #ff0000;
+        color: $error;
         margin-bottom: 1px;
     }
 }

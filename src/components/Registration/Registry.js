@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link,withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import HomeNavigation from '../Home/HomeComponents/HomeNavigation';
 import { withFirebase } from '../Firebase/context';
 
@@ -12,12 +12,15 @@ class Registry extends Component {
         isEmailOk: true,
         isPasswordOk: true,
         isSecondPasswordOk: true,
-        error: null
+        error: ""
     }
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            isEmailOk: true,
+            isPasswordOk: true,
+            isSecondPasswordOk: true
         })
     }
 
@@ -25,6 +28,7 @@ class Registry extends Component {
         e.preventDefault();
         const isEmailOk = this.handleEmailChange(this.state.email)
         const isPasswordOk = this.handlePasswordChange(this.state.password)
+        console.log(this.state.secondPassword, this.state.password)
         const isSecondPasswordOk = this.handleSecondPasswordChange(this.state.secondPassword, this.state.password)
 
         if (isEmailOk !== true) {
@@ -38,8 +42,9 @@ class Registry extends Component {
         }
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
+        await this.validate(e);
         const { isEmailOk, isPasswordOk, isSecondPasswordOk, email, password, error } = this.state
         if (isEmailOk && isPasswordOk && isSecondPasswordOk) {
             this.props.firebase
@@ -56,12 +61,10 @@ class Registry extends Component {
         console.log(error);
     }
 
-    blokSubmit = () => {
-        const { isEmailOk, isPasswordOk, isSecondPasswordOk } = this.state
-        if (isEmailOk && isPasswordOk && isSecondPasswordOk) {
-            return false
-        }
-        return true
+    blockSubmit = () => {
+        const { isEmailOk, isPasswordOk, isSecondPasswordOk} = this.state
+        return isEmailOk && isPasswordOk && isSecondPasswordOk
+         
     }
 
     handleEmailChange = (email) => {
@@ -75,7 +78,7 @@ class Registry extends Component {
     }
 
     handleSecondPasswordChange = (secondPassword, password) => {
-        if (secondPassword.length < 6 || password != secondPassword) {
+        if (password != secondPassword) {
             return false
         }
         return true
@@ -91,7 +94,11 @@ class Registry extends Component {
                         <div className="registryPanel__header__img"></div>
                     </div>
                     <div className="form__container flex">
-                        <form className="form__registry flex">
+                        <form className="form__registry flex" onSubmit={(e) => {
+                            this.validate(e);
+                            this.handleSubmit(e)
+                        }}>
+                            {this.state.error && <p className="errors">{this.state.error.message}</p>}
                             <label>Email</label>
                             <input
                                 name='email'
@@ -116,18 +123,16 @@ class Registry extends Component {
                                 onChange={this.handleChange}
                             ></input>
                             {this.state.isSecondPasswordOk ? "" : <div className="error">Hasła są różne!</div>}
+                            <div className="registryPanel__butons flex">
+                                <button
+                                    disabled={!this.blockSubmit()}
+                                    type="submit">
+                                    załuż konto
+                                </button>
+                                <button><Link to="/logowanie">zaloguj się</Link></button>
+                            </div>
                         </form>
                     </div>
-                    <div className="registryPanel__butons flex">
-                        <button
-                            disabled={this.blokSubmit()}
-                            type="submit" 
-                            onClick={this.validate,this.handleSubmit}>
-                            załuż konto
-                        </button>
-                        <button><Link to="/logowanie">zaloguj się</Link></button>
-                    </div>
-                    {this.state.error && <p>{this.state.error.message}</p>}
                 </div>
             </>
         );
@@ -135,4 +140,4 @@ class Registry extends Component {
 
 }
 
-export default  withRouter(withFirebase(Registry));
+export default withRouter(withFirebase(Registry));

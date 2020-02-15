@@ -1,6 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-
+import 'firebase/database';
 const config = {
     apiKey: "AIzaSyBISq0SYH5YwDZ3GLgl9TVCxxMtW5qCnB4",
     authDomain: "give-away-things.firebaseapp.com",
@@ -16,6 +16,7 @@ const config = {
     constructor() {
       app.initializeApp(config);
       this.auth = app.auth();
+      this.db = app.database();
     }
     doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
@@ -24,5 +25,8 @@ const config = {
         this.auth.signInWithEmailAndPassword(email, password);
 
     doSignOut = () => this.auth.signOut();
+
+    data = () => this.db.ref('organizations');
+  
   }
   export default Firebase;
