@@ -3,6 +3,7 @@ import Home from './components/Home/Home';
 import LogIn from './components/Registration/LogIn';
 import Registry from './components/Registration/Registry';
 import Logout from './components/Registration/Logout';
+import GiveStuff from './components/GiveStuff/GiveStuff';
 import {
   HashRouter,
   Route,
@@ -19,6 +20,7 @@ function App() {
             <Route path='/logowanie' component={LogIn} />
             <Route path='/rejestracja' component={Registry} />
             <Route path='/wylogowano' component={Logout} />
+            <Route path='/oddajrzeczy' component={GiveStuff}/>
           </Switch>
         </>
       </HashRouter>
