@@ -1,0 +1,44 @@
+.giveStuff__container{
+@include centralize;
+flex-direction: column;
+    &__warning{
+        h1{
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 64%;
+        }
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100px;
+        font-size: 1.2rem;
+        text-align: center;
+        background-image: url(../../assets/columns.png);
+    }
+    &__main{
+        background-image: url(../../assets/Background-Form.jpg);
+        background-size: cover;
+        height: 540px;
+        width: 100%;
+        flex-direction: column;
+        p{
+        width: 50%;
+        margin: 3% 0 3% 10%;
+        }
+        &__form{
+        width: 50%;
+        margin-left: 10%;
+        }
+        .giveStuff__container__main__button{
+            cursor: pointer;
+            width: 100px;
+            margin-left: 10%;
+            font-size: 1.1rem;
+            border: none;
+            background-color: transparent;
+            border: 0.7px solid #3C3C3C;
+            padding: 10px   
+        }
+    }
+
+}
