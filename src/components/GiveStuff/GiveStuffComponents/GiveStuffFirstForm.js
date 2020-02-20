@@ -6,14 +6,12 @@ class GiveStuffFirstForm extends Component {
         return (
             <>
                 <h2>Zaznacz co chcesz oddać:</h2>
-                <form>
                     <form>
                             <label className="radio">
                                 <input
                                     type="radio"
                                     value="ubrania które nadają się do ponownego użycia"
                                     name="selectedOption"
-                                    checked={this.props.selectedOption === 'ubrania które nadają się do ponownego użycia'}
                                     onChange={this.props.handleChange} />
                                  ubrania które nadają się do ponownego użycia
                                  <span className="checkmark"></span>
@@ -22,7 +20,7 @@ class GiveStuffFirstForm extends Component {
                                 <input
                                     type="radio"
                                     value="ubrania do wyrzucenia"
-                                    checked={this.props.selectedOption === 'ubrania do wyrzucenia'}
+                                    name="selectedOption"
                                     onChange={this.props.handleChange} />
                                  ubrania do wyrzucenia
                                  <span className="checkmark"></span>
@@ -32,7 +30,7 @@ class GiveStuffFirstForm extends Component {
                                 <input
                                     type="radio"
                                     value="zabawki"
-                                    checked={this.props.selectedOption === 'zabawki'}
+                                    name="selectedOption"
                                     onChange={this.props.handleChange} />
                                 zabawki
                                 <span className="checkmark"></span>
@@ -41,7 +39,7 @@ class GiveStuffFirstForm extends Component {
                                 <input
                                     type="radio"
                                     value="książki"
-                                    checked={this.props.selectedOption === 'książki'}
+                                    name="selectedOption"
                                     onChange={this.props.handleChange} />
                                 książki
                                 <span className="checkmark"></span>
@@ -50,13 +48,12 @@ class GiveStuffFirstForm extends Component {
                                 <input
                                     type="radio"
                                     value="inne"
-                                    checked={this.props.selectedOption === 'inne'}
+                                    name="selectedOption"
                                     onChange={this.props.handleChange} />
                                 inne
                                 <span className="checkmark"></span>
                             </label>
                     </form>
-                </form>
             </>
         );
     }

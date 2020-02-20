@@ -27,17 +27,31 @@ flex-direction: column;
         }
         &__form{
         width: 50%;
+        height: 380px;
         margin-left: 10%;
         }
-        .giveStuff__container__main__button{
-            cursor: pointer;
-            width: 100px;
-            margin-left: 10%;
-            font-size: 1.1rem;
-            border: none;
-            background-color: transparent;
-            border: 0.7px solid #3C3C3C;
-            padding: 10px   
+        &__buttons{
+            width: 50%;
+            &__button__first{
+                cursor: pointer;
+                width: 100px;
+                margin-left: 20%;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px   
+            }
+            &__button__second{
+                cursor: pointer;
+                width: 100px;
+                margin-left: 20%;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px   
+            }
         }
     }
 
