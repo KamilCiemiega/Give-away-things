@@ -8,11 +8,11 @@ import Summary from './GiveStuffComponents/Summary';
 class GiveStuff extends Component {
     state = {
         pageNr: 1,
-        bags: "",
         selectedOption: "",
+        bags:"",
         location: "",
         whoHelp: "",
-        optional: "",
+        optional:"",
         checked: false,
         street: "",
         city: "",
@@ -48,14 +48,16 @@ class GiveStuff extends Component {
             case 1:
                 return <GiveStuffFirstForm handleChange={this.handleChange} selectedOption={this.state.selectedOption} />
             case 2:
-                return <GiveStuffSecondForm handleChange={this.handleChange} bags={this.state.bags} />
+                return <GiveStuffSecondForm 
+                handleChange={this.handleChange} 
+                bags={this.state.bags} />
             case 3:
                 return <GiveStuffThirdForm
                     handleChange={this.handleChange}
                     locaion={this.state.location}
                     whoHelp={this.state.whoHelp}
-                    checked={this.state.checked}
-                    optional={this.state.optional} />
+                    checked={this.state.checked} 
+                    optional={this.state.optional}/>
             case 4:
                 return <GiveStuffFourthForm
                     handleChange={this.handleChange}

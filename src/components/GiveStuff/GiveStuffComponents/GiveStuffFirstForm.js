@@ -6,7 +6,7 @@ class GiveStuffFirstForm extends Component {
         return (
             <>
                 <h2>Zaznacz co chcesz oddać:</h2>
-                    <form>
+                    <form className="conatainer__first">
                             <label className="radio">
                                 <input
                                     type="radio"

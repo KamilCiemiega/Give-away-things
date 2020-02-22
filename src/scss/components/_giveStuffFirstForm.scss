@@ -2,6 +2,8 @@
         font-size: 1.5rem;
         margin-bottom: 5%;
     }
+    .conatainer__first{
+        margin-top: 9%;
     .radio{
         display: block;
         position: relative;
@@ -30,7 +32,8 @@
             background-color: $bg2;
             border: solid 1px $text;
             &:hover{
-                background-color: $text2;    
+                background-color: $inputHover;
+                transition: .5s;
             }
             &:after{
                 content: "";
@@ -39,3 +42,4 @@
             }
         }
     }
+}
