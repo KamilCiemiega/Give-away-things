@@ -19,9 +19,11 @@
 @import './components/giveStuffHeader';
 @import './components/giveStuff';
 @import './components/giveStuffFirstForm';
-@import './components/giveSuffSecondForm';
+@import './components/giveStuffSecondForm';
 @import './components/giveStuffThirdForm';
 @import './components/giveStuffFourthForm';
+@import './components/giveStuffSummery';
+@import './components//giveStuffConfirm';
 body{
     font-family: $font-base;
 }

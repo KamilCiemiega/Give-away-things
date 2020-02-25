@@ -2,18 +2,17 @@
 @include centralize;
 flex-direction: column;
     &__warning{
-        h1{
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: 64%;
-        }
-        justify-content: center;
         flex-direction: column;
         width: 100%;
         height: 100px;
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: center;
         background-image: url(../../assets/columns.png);
+        h1{
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1%;
+        }
     }
     &__main{
         background-image: url(../../assets/Background-Form.jpg);
@@ -32,9 +31,11 @@ flex-direction: column;
         }
         &__buttons{
             width: 50%;
+            margin-top: 2%;
             &__button__first{
                 cursor: pointer;
-                width: 100px;
+                width: 125px;
+                height: 50px;
                 margin-left: 20%;
                 font-size: 1.1rem;
                 border: none;
@@ -48,7 +49,8 @@ flex-direction: column;
             }
             &__button__second{
                 cursor: pointer;
-                width: 100px;
+                width: 125px;
+                height: 50px;
                 margin-left: 20%;
                 font-size: 1.1rem;
                 border: none;

@@ -23,8 +23,7 @@ function Navigation() {
                         to="HomeEasySteps"
                         smooth={"true"}
                         offset={-70}
-                        duration={500}
-                        className="link">
+                        duration={500}>
                         O co chodzi?
                     </Link>
                 </li>
@@ -33,8 +32,7 @@ function Navigation() {
                         to="about"
                         smooth={"true"}
                         offset={-70}
-                        duration={500}
-                        className="link">
+                        duration={500}>
                         O nas
                     </Link>
                 </li>
@@ -43,8 +41,7 @@ function Navigation() {
                     <Link to="contact"
                         smooth={"true"}
                         offset={-70}
-                        duration={500}
-                        className="link">
+                        duration={500}>
                         Kontakt
                     </Link>
                 </li>

@@ -5,6 +5,11 @@
     z-index: 1;
     ul {
         list-style: none;
+        li:first-child :hover{
+                color: #FAD648;
+                transition: all .4s;
+            
+        }
         li {
             font-size: .8rem;
             margin-left: 20px;
@@ -12,6 +17,11 @@
             &:nth-child(2) {
                 padding: 5px;
                 border: .75px solid #FAD648;
+                &:hover{
+                    border: .75px solid #000000;
+                    color: #FAD648;
+                    transition: all .4s;
+                }
             }
             .link {
                 text-decoration: none;

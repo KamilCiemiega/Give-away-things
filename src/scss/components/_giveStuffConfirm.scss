@@ -1,0 +1,15 @@
+.confirm{
+    margin-top: 40%;
+    margin-left: 9%;
+    @include centralize;
+    flex-direction: column;
+    &__title {
+        text-align: center;
+        padding-top: 28px;
+        font-size: 1.5rem;
+        margin-bottom: 5%;
+    }
+    &__decoration {
+        @include decoration;
+    }
+}

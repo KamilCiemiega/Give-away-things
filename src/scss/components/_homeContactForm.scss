@@ -68,10 +68,14 @@
                 margin-left: 70%;
                 margin-top: 10%;
                 font-size: 1.1rem;
-                border: none;
                 background-color: transparent;
                 border: .7px solid $text;
                 padding: 10px;
+                &:hover{
+                    border: solid $text2 1px;
+                    color: $text2;
+                    transition: all .4s;
+                }
             }
         }
         input{

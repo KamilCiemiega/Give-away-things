@@ -89,7 +89,7 @@ export default class HomeContactForm extends Component {
                 <div className="contact__empty"></div>
                 <div className="contact__form">
                     <div className="contact__form__header flex">
-                    <SectionTitle title="Skontaktuj się z nami"/>
+                    <SectionTitle>Skontaktuj się z nami</SectionTitle>
                     {this.state.dataStatus === "success" && <div className="success">Wiadomość zostałą wysłana! wkrótce się skontaktujemy</div> }
                     </div>
                     <form className="flex" onSubmit={this.validate}>

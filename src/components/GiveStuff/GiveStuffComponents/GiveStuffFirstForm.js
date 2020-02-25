@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Summary from './Summary';
+import Summary from './GiveStuffSummary';
 
 class GiveStuffFirstForm extends Component {
     render() {

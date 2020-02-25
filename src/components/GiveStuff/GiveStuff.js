@@ -3,16 +3,17 @@ import GiveStuffHeader from './GiveStuffComponents/GiveStuffHeader';
 import GiveStuffFirstForm from './GiveStuffComponents/GiveStuffFirstForm';
 import GiveStuffSecondForm from './GiveStuffComponents/GiveStuffSecondForm';
 import GiveStuffThirdForm from './GiveStuffComponents/GiveStuffThirdForm';
-import GiveStuffFourthForm from './GiveStuffComponents/GiveStaffFourthForm';
-import Summary from './GiveStuffComponents/Summary';
+import GiveStuffFourthForm from './GiveStuffComponents/GiveStuffFourthForm';
+import GiveStuffSummary from './GiveStuffComponents/GiveStuffSummary';
+import GiveStuffConfirm from './GiveStuffComponents/GiveStuffConfirm';
 class GiveStuff extends Component {
     state = {
         pageNr: 1,
         selectedOption: "",
-        bags:"",
+        bags: "",
         location: "",
         whoHelp: "",
-        optional:"",
+        optional: "",
         checked: false,
         street: "",
         city: "",
@@ -48,16 +49,16 @@ class GiveStuff extends Component {
             case 1:
                 return <GiveStuffFirstForm handleChange={this.handleChange} selectedOption={this.state.selectedOption} />
             case 2:
-                return <GiveStuffSecondForm 
-                handleChange={this.handleChange} 
-                bags={this.state.bags} />
+                return <GiveStuffSecondForm
+                    handleChange={this.handleChange}
+                    bags={this.state.bags} />
             case 3:
                 return <GiveStuffThirdForm
                     handleChange={this.handleChange}
                     locaion={this.state.location}
                     whoHelp={this.state.whoHelp}
-                    checked={this.state.checked} 
-                    optional={this.state.optional}/>
+                    checked={this.state.checked}
+                    optional={this.state.optional} />
             case 4:
                 return <GiveStuffFourthForm
                     handleChange={this.handleChange}
@@ -69,15 +70,17 @@ class GiveStuff extends Component {
                     hour={this.state.hour}
                     notes={this.state.notes} />
             case 5:
-                return <Summary />
+                return <GiveStuffSummary {...this.state} />
+            case 6:
+                return <GiveStuffConfirm/>
         }
     }
 
     nextButton = () => {
         const next = this.state.pageNr + 1
-        if (this.state.pageNr !== 5)
+        if (this.state.pageNr !== 6)
             this.setState({
-                pageNr: next
+                pageNr: next,
             })
     }
 
@@ -89,38 +92,47 @@ class GiveStuff extends Component {
             })
     }
     currentStep = () => {
-        if (this.state.pageNr < 5)
+        if (this.state.pageNr < 6)
             return this.state.pageNr
     }
     render() {
         return (
             <div className="giveStuff__container flex">
                 <GiveStuffHeader />
-                <div className="giveStuff__container__warning flex">
-                    <h1>Ważne!</h1>
-                    {this.warningDescription()}
-                </div>
+                {this.state.pageNr < 5 ?
+                    <div className="giveStuff__container__warning flex">
+                        <h1>Ważne!</h1>
+                        {this.warningDescription()}
+                    </div> : ""
+                }
                 <div className="giveStuff__container__main flex">
                     {
-                        this.state.pageNr < 5 ? <p>Krok{this.currentStep()}/4</p> : ""
+                        this.state.pageNr < 6 ? <p>Krok{this.currentStep()}/5</p> : ""
                     }
                     <div className="giveStuff__container__main__form">
                         {this.nextForm()}
                     </div>
                     <div className="giveStuff__container__main__buttons flex">
-                        {   this.state.pageNr === 1 ? "" :
+                        {this.state.pageNr === 1 || this.state.pageNr === 6 ? "" :
                             <button
                                 className="giveStuff__container__main__buttons__button__first"
                                 onClick={this.prevButton}>Wstecz
                             </button>
                         }
-                        <button
-                            className="giveStuff__container__main__buttons__button__second"
-                            onClick={this.nextButton}>Dalej
-                        </button>
+                        {this.state.pageNr < 5 ?
+                            <button
+                                className="giveStuff__container__main__buttons__button__second"
+                                onClick={this.nextButton}>Dalej
+                            </button> : ""
+                        }
+                        {this.state.pageNr === 5 ?
+                            <button
+                                className="giveStuff__container__main__buttons__button__second"
+                                onClick={this.nextButton}>Potwierdzam
+                            </button> : ""
+                        }
                     </div>
                 </div>
-                {/* <Summary {...this.state}/> */}
             </div>
         );
     }

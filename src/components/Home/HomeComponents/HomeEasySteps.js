@@ -6,7 +6,7 @@ import SectionTitle from '../../SectionTitle/SectionTitle';
 const homeEasySteps = (props) => {
     return (
         <div className="container__home__easy__steps" name="HomeEasySteps">
-            <SectionTitle title="Wystarczą 4 proste kroki"/>
+            <SectionTitle>Wystarczą 4 proste kroki</SectionTitle>
             <div className='home__easy__steps' >
                 <div className="home__easy__steps__column">
                     <div className='home__easy__steps__column__img1'></div>
@@ -33,7 +33,7 @@ const homeEasySteps = (props) => {
                     <div>kurier przyjedzie w dogodnym terminie</div>
                 </div>
             </div>
-            <Link to="/login"><button>ODDAJ RZECZY</button></Link>
+            <Link to="/logowanie"><button>ODDAJ RZECZY</button></Link>
         </div>
     );
 }

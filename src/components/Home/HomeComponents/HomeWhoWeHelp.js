@@ -12,10 +12,14 @@ class HomeWhoWeHelp extends Component {
     }
 
     componentDidMount(){
-        this.fetchData('Fundacjom')
-        let ref = this.props.firebase.data();
-        console.log(ref);
-        // ref.on('value',this.getData())
+        console.log(this.props.firebase)
+        const ref = this.props.firebase.db.ref('organizations')
+        ref.on("value", (snapshot) => {
+        this.setState({ items : snapshot.val()});
+          }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          });
+        
     }
 
     // getData = (data) => {
