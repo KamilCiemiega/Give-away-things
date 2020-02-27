@@ -72,7 +72,7 @@
                 border: .7px solid $text;
                 padding: 10px;
                 &:hover{
-                    border: solid $text2 1px;
+                    border: solid $text2 .7px;
                     color: $text2;
                     transition: all .4s;
                 }

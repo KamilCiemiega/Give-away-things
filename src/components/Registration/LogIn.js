@@ -15,9 +15,8 @@ class LogIn extends Component {
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
-            isEmailOk: true,
-            isPasswordOk: true,
-            isSecondPasswordOk: true
+            isEmailok: true,
+            isPasswordok: true,
         })
     }
 
@@ -35,8 +34,8 @@ class LogIn extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         await this.validate(e)
-        const { isEmailOk, isPasswordOk, email, password, error } = this.state
-        if (isEmailOk && isPasswordOk) {
+        const { isEmailok, isPasswordok, email, password, error } = this.state
+        if (isEmailok && isPasswordok) {
             this.props.firebase
                 .doSignInWithEmailAndPassword(email, password)
                 .then(authUser => {
@@ -50,9 +49,8 @@ class LogIn extends Component {
         console.log(error);
     }
     blockSubmit = () => {
-        const { isEmailOk, isPasswordOk } = this.state
-        return isEmailOk && isPasswordOk
-         
+        const { isEmailok, isPasswordok } = this.state
+        return isEmailok && isPasswordok
     }
 
     handleEmailChange = (email) => {
@@ -78,6 +76,12 @@ class LogIn extends Component {
                             this.validate(e);
                             this.handleSubmit(e)
                         }}>
+                            {this.state.error && 
+                            <div className="errors flex">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p>{this.state.error.message}</p>
+                            </div>
+                            }
                             <label>Email</label>
                             <input
                                 name='email'
@@ -104,7 +108,6 @@ class LogIn extends Component {
                             </div>
                         </form>
                     </div>
-                    {this.state.error && <p>{this.state.error.message}</p>}
                 </div>
             </>
         );

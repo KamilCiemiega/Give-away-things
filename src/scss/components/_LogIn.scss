@@ -18,11 +18,31 @@
     .form__container {
         .form__login {
             background-color: $bg;
-            width: 380px;
-            height: 280px;
+            width: 400px;
+            height: 350px;
             margin-bottom: 15%;
             flex-direction: column;
             @include centralize;
+            label:first-of-type{
+                margin-top: 5%;
+            }
+            label:last-of-type{
+                margin-top: 8%;
+            }
+            .errors{
+                width: 380px;
+                padding: 4%;
+                font-weight: bold;
+                font-size: .8rem;
+                border-radius: 5px;
+                background: $errorFetch;
+                color: $errorFetch2;
+                text-align: center;
+                .fa-exclamation-circle{
+                    font-size: 20px;
+                    color: $errorFetch2;
+                }
+            }
             label {
                 margin-right: 40%;
                 margin-top: 10%;
@@ -38,24 +58,34 @@
     }
     .logInPanel__butons{
         width: 100%;
-        height: 100%;
         @include centralize;
         justify-content: space-around;
         button{
             margin-top: 12%;
-            border: 1px solid #3C3C3C;
+            border: 1px solid $text;
             background: $bg2;
             width: 80px;
             height: 30px;
             font-size: .8rem;
             color: $text2;
             cursor: pointer;
+            & a {
+                text-decoration: none;
+                color: $text;
+                &:hover{
+                    transition: all .4s;
+                    color: $hover;
+                    background-color:$bg;
+                    border: $hover;
+                } 
+               }
             &:disabled{
                 background-color: $errorFetch;
                 border: 1px solid ;
                 color:$errorFetch2;
                 cursor: not-allowed;                   
                 &:disabled:hover{
+                    transition: all .4s;
                     border:none;
                     background-color: $errorFetch;
                     color:$errorFetch2;
@@ -63,18 +93,18 @@
                 }
             }
                 &:hover{
-                    transition: .2s;
-                    color: #f9cb16;
-                    background-color:#F0F1F1;
-                    border: #f9cb16;
+                    transition: all .4s;
+                    color: $hover;
+                    background-color:$bg;
+                    border: $hover;
                 }
         }
     }
     .error{
         width: 200px;
-        border-top: 1px solid #ff0000 !important;
+        border-top: 1px solid $error !important;
         font-size: .8rem;
-        color: #ff0000;
+        color: $error;
         margin-bottom: 1px;
     }
 }

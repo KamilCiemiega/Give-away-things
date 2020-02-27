@@ -28,7 +28,6 @@ class Registry extends Component {
         e.preventDefault();
         const isEmailOk = this.handleEmailChange(this.state.email)
         const isPasswordOk = this.handlePasswordChange(this.state.password)
-        console.log(this.state.secondPassword, this.state.password)
         const isSecondPasswordOk = this.handleSecondPasswordChange(this.state.secondPassword, this.state.password)
 
         if (isEmailOk !== true) {
@@ -98,7 +97,12 @@ class Registry extends Component {
                             this.validate(e);
                             this.handleSubmit(e)
                         }}>
-                            {this.state.error && <p className="errors">{this.state.error.message}</p>}
+                            {this.state.error && 
+                                <div className="errors flex">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p>{this.state.error.message}</p>
+                            </div>
+                            }
                             <label>Email</label>
                             <input
                                 name='email'

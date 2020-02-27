@@ -12,7 +12,8 @@
         overflow: hidden;
         order: 1;
         &.active{
-            max-height: 240px;
+            position: relative;
+            max-height: 390px;
             width: 70px;
             opacity: 1;
             margin-left: 82.5%;
@@ -48,6 +49,8 @@
     }
     .option{
         text-align: center;
+        position: relative;
+        user-select: none;
     }
     .option:hover{
         background: $bg2;
@@ -57,8 +60,4 @@
     & label {
         cursor: pointer;
     }
-    .radio{
-        // display: none;
-    }
-
 }

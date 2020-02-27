@@ -57,7 +57,10 @@
                 & label {
                     width: 95px;
                 }
-                & input[type=textarea]{
+                & textarea{
+                    overflow: hidden;
+                    background: transparent;
+                    border: 1px solid $borderInput;
                     width: 220px;
                     height: 80px;
                 }

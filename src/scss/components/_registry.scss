@@ -51,6 +51,10 @@
             color: $errorFetch2;
             text-align: center;
             margin-bottom: 3%;
+            .fa-exclamation-circle{
+                font-size: 20px;
+                color: $errorFetch2;
+            }
         }
     }
     .registryPanel__butons{
@@ -59,19 +63,30 @@
         @include centralize;
         justify-content: space-around;
         button{          
-            border: 1px solid #3C3C3C;
+            border: 1px solid $text;
             background: $bg2;
             width: 80px;
             height: 30px;
             font-size: .8rem;
             color: $text2;
             cursor: pointer;
+                & a {
+                 text-decoration: none;
+                 color: $text;
+                 &:hover{
+                    transition: all .4s;
+                    color: $hover;
+                    background-color:$bg;
+                    border: $hover;
+                }  
+                }
                 &:disabled{
                     background-color: $errorFetch;
                     border: 1px solid ;
                     color:$errorFetch2;
                     cursor: not-allowed;                   
                     &:disabled:hover{
+                        transition: all .4s;
                         border:none;
                         background-color: $errorFetch;
                         color:$errorFetch2;
@@ -79,9 +94,9 @@
                     }
                 }
                 &:hover{
-                    transition: .2s;
+                    transition: all .4s;
                     color: $hover;
-                    background-color:#F0F1F1;
+                    background-color:$bg;
                     border: $hover;
                 }
         }
@@ -89,7 +104,7 @@
     
     .error{
         width: 200px;
-        border-top: 1px solid #ff0000 !important;
+        border-top: 1px solid $error !important;
         font-size: .8rem;
         color: $error;
         margin-bottom: 1px;

@@ -71,8 +71,7 @@ export default class GiveStuffFourth extends Component {
                             </div>
                             <div className="container__fourth__form__main__form__elemets flex">
                                 <label>Uwagi <br />dla kuriera</label>
-                                <input
-                                    type="textarea"
+                                <textarea 
                                     name="notes"
                                     value={this.props.notes}
                                     onChange={this.props.handleChange}

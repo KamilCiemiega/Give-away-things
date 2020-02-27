@@ -4,7 +4,7 @@ export default class GiveStuffSummary extends Component {
     render() {
         const {
             selectedOption, bags, location, whoHelp, optional,
-            checked, street, city, zipCode, phoneNumber, data, hour, notes
+            street, city, zipCode, phoneNumber, data, hour, notes
         } = this.props
         return (
             <div className="summary__container flex">
@@ -12,12 +12,11 @@ export default class GiveStuffSummary extends Component {
                 <div className="summary__container__give flex">
                     <h3>oddajesz:</h3>
                     <div className="summary__container__give__stuff flex">
-                        {/* <div className="summary__container__give__stuff__imgfirst"></div> */}
-                        <img src='../../assets/Hero.png'></img>
-                        <span>{bags} worki, {selectedOption}</span>
+                        <div className="summary__container__give__stuff__imgfirst"></div>
+                        <span>{bags} worki {selectedOption} {whoHelp} {optional}</span>
                     </div>
                     <div className="summary__container__give__location flex">
-                        <div className="summary__container__give__stuff__imgsecond"></div>
+                        <div className="summary__container__give__location__imgsecond"></div>
                         <span>dla lokalizacji: {location}</span>
                     </div>
                 </div>

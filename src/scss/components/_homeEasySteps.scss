@@ -12,7 +12,7 @@
         align-items: center;
         width: 100%;
         @for $i from 1 through 4 {
-            .home__easy__steps__column__img#{$i} { background-image: url(../../assets/Icon-#{$i}.svg); }
+            .home__easy__steps__column__img#{$i} { background-image: url(../../assets/Icon-#{$i}.svg); height: 50px; widows: 50px;}
         }
         &__column{
             width: 130px;

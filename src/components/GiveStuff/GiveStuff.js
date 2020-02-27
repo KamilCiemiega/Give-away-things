@@ -107,7 +107,7 @@ class GiveStuff extends Component {
                 }
                 <div className="giveStuff__container__main flex">
                     {
-                        this.state.pageNr < 6 ? <p>Krok{this.currentStep()}/5</p> : ""
+                        this.state.pageNr < 6 ? <p>Krok {this.currentStep()}/5</p> : ""
                     }
                     <div className="giveStuff__container__main__form">
                         {this.nextForm()}
