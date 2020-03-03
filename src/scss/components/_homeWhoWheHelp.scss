@@ -3,21 +3,6 @@
     flex-direction: column;
     width: 100%;
     height: 70vh;
-    .whowehelp__container__header{
-        @include centralize;
-        flex-direction: column;
-        width: 100%;
-        h1{
-            font-size: 2rem;
-            font-weight: normal;
-        }
-        &__img{
-            margin-top: 2%;
-            margin-right: .5%;
-            @include decoration;
-            margin-bottom: 5%;
-        }
-    }
     .whowehelp__container__partners{
         @include centralize;
         width: 100%;

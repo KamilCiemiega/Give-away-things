@@ -25,7 +25,7 @@ class LoginPanel extends Component {
         const logged =
             <ul>
                 <li>{`Cześć ${authUser?.email}`}</li>
-                <li><Link className="link" to='/'>Oddaj rzeczy</Link></li>
+                <li><Link className="link" to='/oddajrzeczy'>Oddaj rzeczy</Link></li>
                 <li><Link className="link" to='/wylogowano' onClick={this.logoutHandler}>Wyloguj się</Link></li>
             </ul>
         const notLogged =

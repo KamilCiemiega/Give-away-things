@@ -8,7 +8,7 @@ const logout = () => {
         <>
             <HomeNavigation />
             <div className="logout__panel flex">
-                    <SectionTitle title="Wylogowano pomyślnie!"/>
+                    <SectionTitle>Wylogowano pomyślnie!</SectionTitle>
                     <Link to="/">
                         <button className="logout__panel__button">Strona główna</button>
                     </Link>

@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import organizations from '../../../data/organizations.json';
 import { withFirebase } from '../../Firebase/context';
-
+import SectionTite from '../../SectionTitle/SectionTitle';
 
 class HomeWhoWeHelp extends Component {
 
     state = {
         items: [],
         description: "",
-        currentPage:1
+        currentPage:1,
+        todosPerPage: 3
     }
-
     componentDidMount(){
         console.log(this.props.firebase)
         const ref = this.props.firebase.db.ref('organizations')
@@ -19,50 +18,33 @@ class HomeWhoWeHelp extends Component {
           }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           });
-        
+    }
+    handleClick = (e) => {
+        this.setState({
+            currentPage: Number(e.target.id)
+        });
     }
 
-    // getData = (data) => {
-        
+
+    
+    // fetchData = (name, start =0, end = 3) => {
+    //     fetch(`http://localhost:3005/organizations/?fundacja=${name}&_start=${start}&_end=${end}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.setState({
+    //                 items: data,
+    //            //     description: data.description
+    //             })
+    //         })
     // }
-
-    fetchData = (name, start =0, end = 3) => {
-        fetch(`http://localhost:3005/organizations/?fundacja=${name}&_start=${start}&_end=${end}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    items: data,
-               //     description: data.description
-                })
-            })
-    }
-    nextPage = (pageNumber) => {
-        const name = "Fundacjom";
-        const start = 0;
-        const end = 2
-        this.fetchData()
-    }
-
-    paginantion = () => {
-        const pageLinks =[]
-        const numberPages = Math.floor(this.state.items /3);
-
-        for(let i = 1; i <=this.state.items + 1; i++){
-            let active = this.state.currentPage == i ? 'active' : '';
-
-            pageLinks.push(<li className={active} key={i} onClick={() => this.nextPage(i)}><a href="#">{i}</a></li>)
-        }
-        return pageLinks;
-    }
-
     buildList = () => {
-        const list = this.state.items.map((element, index) => {
+        const list = this.state.items.foundations.map((element,index) => {
             return (
                 <div key={index} className="whowehelp__container__list">
                     <ul>
-                        <li>{element.name}</li>
-                        <li>{element.mission}</li>
-                        <li>{element.things}</li>
+                        <li>{}</li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
             )
@@ -70,17 +52,27 @@ class HomeWhoWeHelp extends Component {
         return list
     }
 
-    handleCHangeOrganization = (name) => () => {
-        this.fetchData(name)
-    }
-
     render() {
+        console.log(this.state.items.organizations)
+        const { items, currentPage, todosPerPage } = this.state;
+
+        // Logic for displaying current todos
+        const indexOfLastTodo = currentPage * todosPerPage;
+        const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+        const currentTodos = items.slice(indexOfFirstTodo, indexOfLastTodo);
+
+        const renderTodos = currentTodos.map((todo, index) => {
+          return <li key={index}>{todo}</li>;
+        });
+
+        // Logic for displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(items.length / todosPerPage); i++) {
+          pageNumbers.push(i);
+        }
         return (
             <div className="whowehelp__container flex">
-                <div className="whowehelp__container__header flex">
-                    <h1>Komu pomagamy?</h1>
-                    <div className="whowehelp__container__header__img"></div>
-                </div>
+                <SectionTite>Komu pomagamy?</SectionTite>
                 <div className="whowehelp__container__partners flex">
                     <button  className="whowehelp__container__partners__partner">
                         <span>Fundacjom</span>
@@ -99,7 +91,6 @@ class HomeWhoWeHelp extends Component {
                     <div className="whowehelp__container__text__list flex">
                         {this.buildList()}
                     </div>
-                    {this.paginantion()}
                 </div>
             </div>
         );
