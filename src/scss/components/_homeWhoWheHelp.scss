@@ -2,11 +2,12 @@
     @include centralize;
     flex-direction: column;
     width: 100%;
-    height: 70vh;
+    height: 900px;
     .whowehelp__container__partners{
         @include centralize;
         width: 100%;
         margin-top: 3%;
+        margin-bottom: 6%;
         &__partner {
             cursor: pointer;
             font-size: 1rem;
@@ -28,13 +29,41 @@
         width: 100%;
         flex-direction: column;
         @include centralize;
-        &__description{
-            margin-bottom: 3%;
-        }
         &__list{
-
+            &::after {
+                content: "";
+                display: block;
+                width: 1000px;
+                height: 2px;
+                background: $afterColor;
+                margin-top: 25px;
+                margin-bottom: 10px;         
+             }
+             
             li{
                 list-style: none;
+                font-size: 1.5rem;
+            }
+            &__mission{
+                font-family: $listFont;
+            }
+        }
+        &__buttons{
+            margin-top: 5%;
+            button:first-child{
+                margin-left: 0;
+            }
+            .whowehelp__button{
+                border: none;
+                width: 30px;
+                height: 40px;
+                margin-left: 30px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                &:active, &:focus{
+                    outline-color: $borderInput;
+                    border: 1px solid $borderInput; 
+                }
             }
         }
     }

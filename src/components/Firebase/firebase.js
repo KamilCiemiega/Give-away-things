@@ -26,7 +26,7 @@ const config = {
 
     doSignOut = () => this.auth.signOut();
 
-    data = () => this.db.ref('organizations');
+    data = () => this.db.ref('foundations');
   
   }
   export default Firebase;
