@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../Firebase/context';
 import SectionTite from '../../SectionTitle/SectionTitle';
+import * as actionCreators from '../../store/actions/index';
 
 class HomeWhoWeHelp extends Component {
 
@@ -149,7 +150,18 @@ class HomeWhoWeHelp extends Component {
                 </div>
             </div>
         );
-    }
+    };
+}
+const mapStateToProps = state => {
+    return {
+        pag:state.pag.currentTodos
+    } 
 }
 
+const mapDispatchToProps = dispatch => {
+    return{
+        onBuildList: () => dispatch(actionCreators.buildList()),
+        onActiveView: (view) => dispatch(actionCreators.activeView(view)),
+    }
+}
 export default withFirebase(HomeWhoWeHelp)
