@@ -1,5 +1,36 @@
 .summary__container{
     flex-direction: column;
+    &__button__first{
+        cursor: pointer;
+        width: 125px;
+        height: 50px;
+        margin-top: 40px;
+        font-size: 1.1rem;
+        border: none;
+        background-color: transparent;
+        border: 0.7px solid #3C3C3C;
+        padding: 10px;
+        &:hover{
+            background:$bg2;
+            transition: .5s;
+        }
+    }
+    &__button__second{
+        cursor: pointer;
+                width: 125px;
+                height: 50px;
+                margin-top: 40px;
+                margin-left: 40px;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px;
+                &:hover{
+                    background:$bg2;
+                    transition: .5s;
+                }
+    }
     &__give{
         flex-direction: column;
         font-weight: bold;
@@ -18,8 +49,27 @@
                 background-image: url(../../assets/Icon-1.svg);
             }
         }
+        &__whoHelp{
+            flex-direction: row;
+            align-items: center;
+            margin-top: 14px;
+            margin-left: 3px;
+            .fa-smile{
+                font-size: 35px;
+            }
+            & ul {
+                list-style: none;
+                display: flex;
+            }
+            & li {
+                margin-left: 10px;
+            }
+            & span {
+                margin-left: 21px;
+            }
+        }
         &__location{
-            margin-top: 3%;
+            margin-top: 12px;
             align-items: center;
             & span {
                 margin-left: 3%;

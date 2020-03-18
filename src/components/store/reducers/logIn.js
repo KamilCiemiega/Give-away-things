@@ -1,14 +1,14 @@
 import * as actionTypes from '../actions/actionsTypes';
 const initialState = {
-    status:""
+    logInError:""
 };
 
 const reducer = ( state = initialState, action ) => {
         switch(action.type){
-            case actionTypes.DATA_STATUS:
+            case actionTypes.LOGIN_ERROR:
                 return {
                     ...state,
-                    status:action.status
+                    logInError:action.logInError
                 }
             default :
                 return state;

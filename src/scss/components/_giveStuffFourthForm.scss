@@ -1,6 +1,37 @@
 .container__fourth{
     flex-direction: column;
     height: 100%;
+    &__button__first{
+        cursor: pointer;
+        width: 125px;
+        height: 50px;
+        margin-top: 125px;
+        font-size: 1.1rem;
+        border: none;
+        background-color: transparent;
+        border: 0.7px solid #3C3C3C;
+        padding: 10px;
+        &:hover{
+            background:$bg2;
+            transition: .5s;
+        }
+    }
+    &__button__second{
+        cursor: pointer;
+                width: 125px;
+                height: 50px;
+                margin-top: 125px;
+                margin-left: 40px;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px;
+                &:hover{
+                    background:$bg2;
+                    transition: .5s;
+                }
+    }
     .container__fourth__form{
         height: 100%;
         margin-top: 6%;

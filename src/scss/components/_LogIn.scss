@@ -38,6 +38,7 @@
                 background: $errorFetch;
                 color: $errorFetch2;
                 text-align: center;
+                margin-bottom: 25px;
                 .fa-exclamation-circle{
                     font-size: 20px;
                     color: $errorFetch2;
@@ -53,6 +54,15 @@
                 border: none;
                 outline: none;
                 border-bottom: 1px solid $text;
+            }
+            .input__error{
+                border-bottom: solid .7px $error;
+            }
+            .text__error{
+                color: $error;
+                font-size: .8rem;
+                width: 100%;
+                margin-left: 204px;
             }
         }
     }
@@ -79,18 +89,15 @@
                     border: $hover;
                 } 
                }
-            &:disabled{
-                background-color: $errorFetch;
-                border: 1px solid ;
-                color:$errorFetch2;
-                cursor: not-allowed;                   
+               &:disabled{
+                border: 1px solid $text2;
+                color:$text2;
+                cursor: not-allowed;
                 &:disabled:hover{
-                    transition: all .4s;
-                    border:none;
-                    background-color: $errorFetch;
-                    color:$errorFetch2;
+                    border: 1px solid $text2;
+                    color:$text2;
                     cursor: not-allowed;
-                }
+                }                   
             }
                 &:hover{
                     transition: all .4s;

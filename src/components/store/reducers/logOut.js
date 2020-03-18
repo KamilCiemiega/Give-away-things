@@ -1,14 +1,14 @@
 import * as actionTypes from '../actions/actionsTypes';
 const initialState = {
-    status:""
+    authUser:null
 };
 
 const reducer = ( state = initialState, action ) => {
         switch(action.type){
-            case actionTypes.DATA_STATUS:
+            case actionTypes.LOGOUT_SUCCESS:
                 return {
                     ...state,
-                    status:action.status
+                    authUser:action.authUser
                 }
             default :
                 return state;

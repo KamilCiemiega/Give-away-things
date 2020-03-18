@@ -1,14 +1,14 @@
 import * as actionTypes from '../actions/actionsTypes';
 const initialState = {
-    status:""
+    regError:""
 };
 
 const reducer = ( state = initialState, action ) => {
         switch(action.type){
-            case actionTypes.DATA_STATUS:
+            case actionTypes.REGISTRY_ERROR:
                 return {
                     ...state,
-                    status:action.status
+                    regError:action.regError
                 }
             default :
                 return state;

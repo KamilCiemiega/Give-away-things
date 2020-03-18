@@ -17,7 +17,7 @@ flex-direction: column;
     &__main{
         background-image: url(../../assets/Background-Form.jpg);
         background-size: cover;
-        height: 650px;
+        height: 700px;
         width: 100%;
         flex-direction: column;
         p{
@@ -29,40 +29,40 @@ flex-direction: column;
         height: 450px;
         margin-left: 10%;
         }
-        &__buttons{
-            width: 50%;
-            margin-top: 2%;
-            &__button__first{
-                cursor: pointer;
-                width: 125px;
-                height: 50px;
-                margin-left: 20%;
-                font-size: 1.1rem;
-                border: none;
-                background-color: transparent;
-                border: 0.7px solid #3C3C3C;
-                padding: 10px;
-                &:hover{
-                    background:$bg2;
-                    transition: .5s;
-                }
-            }
-            &__button__second{
-                cursor: pointer;
-                width: 125px;
-                height: 50px;
-                margin-left: 20%;
-                font-size: 1.1rem;
-                border: none;
-                background-color: transparent;
-                border: 0.7px solid #3C3C3C;
-                padding: 10px;
-                &:hover{
-                    background:$bg2;
-                    transition: .5s;
-                }
-            }
-        }
+        // &__buttons{
+        //     width: 50%;
+        //     margin-top: 2%;
+        //     &__button__first{
+        //         cursor: pointer;
+        //         width: 125px;
+        //         height: 50px;
+        //         margin-left: 20%;
+        //         font-size: 1.1rem;
+        //         border: none;
+        //         background-color: transparent;
+        //         border: 0.7px solid #3C3C3C;
+        //         padding: 10px;
+        //         &:hover{
+        //             background:$bg2;
+        //             transition: .5s;
+        //         }
+        //     }
+        //     &__button__second{
+        //         cursor: pointer;
+        //         width: 125px;
+        //         height: 50px;
+        //         margin-left: 20%;
+        //         font-size: 1.1rem;
+        //         border: none;
+        //         background-color: transparent;
+        //         border: 0.7px solid #3C3C3C;
+        //         padding: 10px;
+        //         &:hover{
+        //             background:$bg2;
+        //             transition: .5s;
+        //         }
+        //     }
+        // }
     }
 
 }

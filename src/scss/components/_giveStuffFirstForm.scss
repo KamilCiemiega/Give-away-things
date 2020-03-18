@@ -4,6 +4,21 @@
     }
     .conatainer__first{
         margin-top: 9%;
+        &__button{
+            cursor: pointer;
+                width: 125px;
+                height: 50px;
+                margin-top: 40px;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px;
+                &:hover{
+                    background:$bg2;
+                    transition: .5s;
+                }
+        }
     .radio{
         display: block;
         position: relative;

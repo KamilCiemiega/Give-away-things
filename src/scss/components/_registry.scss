@@ -6,6 +6,7 @@
     &__header{
         height: 150px;
         margin-top: 10%;
+        margin-bottom: 2%;
         @include centralize;
         flex-direction: column;
         h2{
@@ -39,6 +40,15 @@
                 border: none;
                 outline: none;
                 border-bottom: 1px solid $text;
+            }
+            .input__error{
+                border-bottom: solid .7px $error;
+            }
+            .text__error{
+                color: $error;
+                font-size: .8rem;
+                width: 100%;
+                margin-left: 204px;
             }
         }
         .errors{
@@ -81,17 +91,14 @@
                 }  
                 }
                 &:disabled{
-                    background-color: $errorFetch;
-                    border: 1px solid ;
-                    color:$errorFetch2;
-                    cursor: not-allowed;                   
+                    border: 1px solid $text2;
+                    color:$text2;
+                    cursor: not-allowed;
                     &:disabled:hover{
-                        transition: all .4s;
-                        border:none;
-                        background-color: $errorFetch;
-                        color:$errorFetch2;
+                        border: 1px solid $text2;
+                        color:$text2;
                         cursor: not-allowed;
-                    }
+                    }                   
                 }
                 &:hover{
                     transition: all .4s;
@@ -102,11 +109,11 @@
         }
     }
     
-    .error{
-        width: 200px;
-        border-top: 1px solid $error !important;
-        font-size: .8rem;
-        color: $error;
-        margin-bottom: 1px;
-    }
+    // .error{
+    //     width: 200px;
+    //     border-top: 1px solid $error !important;
+    //     font-size: .8rem;
+    //     color: $error;
+    //     margin-bottom: 1px;
+    // }
 }

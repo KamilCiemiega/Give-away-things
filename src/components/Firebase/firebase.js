@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 import 'firebase/database';
 const config = {
     apiKey: "AIzaSyBISq0SYH5YwDZ3GLgl9TVCxxMtW5qCnB4",
@@ -10,8 +11,8 @@ const config = {
     messagingSenderId: "522739826021",
     appId: "1:522739826021:web:573c48970c8e076578358c",
     measurementId: "G-BJPFQ0YE3P"
-  };
-  
+};
+
   class Firebase { 
     constructor() {
       app.initializeApp(config);

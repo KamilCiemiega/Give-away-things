@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withFirebase } from '../../Firebase/context';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/actions/index';
 
 class LoginPanel extends Component {
 
-    state = {
-        authUser: null
-    }
-
     componentDidMount() {
         this.props.firebase.auth.onAuthStateChanged(authUser => {
-            authUser
-                ? this.setState({ authUser })
-                : this.setState({ authUser: null });
+            this.props.onlogOutSuccess(authUser);
         });
     }
 
@@ -21,10 +17,9 @@ class LoginPanel extends Component {
     };
 
     render() {
-        const {authUser} = this.state
         const logged =
             <ul>
-                <li>{`Cześć ${authUser?.email}`}</li>
+                <li>{`Cześć ${this.props.authUser?.email}`}</li>
                 <li><Link className="link" to='/oddajrzeczy'>Oddaj rzeczy</Link></li>
                 <li><Link className="link" to='/wylogowano' onClick={this.logoutHandler}>Wyloguj się</Link></li>
             </ul>
@@ -36,10 +31,22 @@ class LoginPanel extends Component {
 
         return (
             <div className="loginPanel">
-                {authUser ? logged : notLogged}
+                {this.props.authUser ? logged : notLogged}
             </div>
         )
     }
 };
 
-export default withFirebase(LoginPanel);
+const mapStateToProps = state => {
+    return {
+        authUser: state.logOut.authUser
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onlogOutSuccess: (data) => dispatch(actionCreators.logOutSuccess(data))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withFirebase(LoginPanel));

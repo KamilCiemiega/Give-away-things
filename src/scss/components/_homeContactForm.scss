@@ -46,10 +46,10 @@
             label {
                 font-size: .9rem;
                 font-weight: bolder;
-                margin-bottom: 5%;
+                margin-bottom: 4%;
             }
             input{
-                margin-top: 20%;
+                margin-top: 5%;
             }
             textarea {
                 overflow: hidden;
@@ -76,21 +76,30 @@
                     color: $text2;
                     transition: all .4s;
                 }
+                &:disabled{
+                    color:$text2;
+                    border: 1px solid $text2;
+                    cursor: not-allowed;
+                }
             }
         }
-        input{
-            border:none;
-        }
     }
-    .error{
-        border-top: 1px solid #ff0000 !important;
+    .input__error{
+        border-bottom: solid .7px $error;
+    }
+    .text__error{
+        color: $error;
         font-size: .8rem;
-        color: #ff0000;
-        margin-bottom: 1px;
     }
     .success{
         width: 230px;
-        color: #01cc01;
+        color: $success;
+        font-weight: bold;
+        text-align: center;
+    }
+    .error{
+        width: 230px;
+        color: $error;
         font-weight: bold;
         text-align: center;
     }

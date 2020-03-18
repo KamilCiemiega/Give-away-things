@@ -1,7 +1,8 @@
 .select__box{
-    margin-top: 6%;
+    margin-top: 1%;
     width: 400px;
     flex-direction: column;
+    position: absolute;
     .option__container{
         background: $text;
         color: $bg;
@@ -60,4 +61,38 @@
     & label {
         cursor: pointer;
     }
+    & input {
+        cursor: pointer;
+    }
+}
+.button__first{
+    cursor: pointer;
+    width: 125px;
+    height: 50px;
+    margin-top: 400px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: transparent;
+    border: 0.7px solid #3C3C3C;
+    padding: 10px;
+    &:hover{
+        background:$bg2;
+        transition: .5s;
+    }
+}
+.button__second{
+    cursor: pointer;
+            width: 125px;
+            height: 50px;
+            margin-top: 400px;
+            margin-left: 40px;
+            font-size: 1.1rem;
+            border: none;
+            background-color: transparent;
+            border: 0.7px solid #3C3C3C;
+            padding: 10px;
+            &:hover{
+                background:$bg2;
+                transition: .5s;
+            }
 }
