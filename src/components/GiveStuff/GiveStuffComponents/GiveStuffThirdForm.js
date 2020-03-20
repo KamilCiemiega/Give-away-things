@@ -11,22 +11,36 @@ class GiveStuffThirdForm extends Component {
     };
 
     render() {
+        const validate = values => {
+            const errors = {};
+            if (!values.whoHelp) {
+                errors.whoHelp = 'Wybierz komu chcesz pomóc';
+            }
+            return errors;
+        };
         return (
             <>
                 <Formik
                     initialValues={{ location: "", whoHelp: "", optional: "" }}
+                    validate={validate}
                     onSubmit={(values) => {
                         this.props.onThirdFormValue(values)
                         this.props.onNextPage(this.props.pageNr + 1)
                     }}
                 >
-                    {({ values, handleChange, handleBlur }) => (
+                    {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        isSubmitting
+                    }) => (
                         <Form>
-                            <form className="third__container flex">
+                            <div className="third__container flex">
                                 <h2>Lokalizacja:</h2>
                                 <div className="choose__box flex">
-                                    <div
-                                        className={`option__main ${this.props.active ? 'active' : null}`}>
+                                    <div className={`option__main ${this.props.active ? 'active' : null}`}>
                                         <div className={`option ${this.props.active ? 'active' : null}`}
                                             onClick={this.toggleClass}>
                                             <Field
@@ -81,17 +95,36 @@ class GiveStuffThirdForm extends Component {
                                     </div>
                                     <div className="selected" onClick={this.toggleClass}>
                                         -- wybierz --
-                    </div>
+                        </div>
                                 </div>
                                 {/* komu chcesz pomoć*/}
                                 <div className="third__container__help flex">
                                     <h3>Komu chcesz pomóc</h3>
+                                    {this.props.error &&
+                                            <div className="errors flex">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <p>{this.props.error.message}</p>
+                                            </div>
+                                        }
+                                        {
+                                            errors.whoHelp && touched.whoHelp ?
+                                                (
+                                                <div className="errors flex">
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    <p>{errors.whoHelp}</p>
+                                                </div>
+                                                    // <div className="text__error">
+                                                    //     <p>{errors.whoHelp}</p>
+                                                    // </div>
+                                                ) : null
+                                        }
                                     <div className="third__container__help__main">
                                         <label className="checkbox">
                                             <Field
                                                 name="whoHelp"
                                                 type="checkbox"
-                                                value="dzieciom">
+                                                value="dzieciom"
+                                                >
                                             </Field>
                                             <span className="checkmark">dzieciom</span>
                                         </label>
@@ -145,9 +178,9 @@ class GiveStuffThirdForm extends Component {
                                         className="third__container__button__first"
                                         onClick={() => this.props.onPreviewPage(this.props.pageNr - 1)}>Wstecz
                                     </button>
-                                    <button type="submit" className="third__container__button__second">Dalej</button>
+                                    <button type="submit" className="third__container__button__second" disabled={isSubmitting}>Dalej</button>
                                 </div>
-                            </form>
+                            </div>
                         </Form>
                     )}
                 </Formik>

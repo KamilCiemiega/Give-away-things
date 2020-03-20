@@ -101,9 +101,8 @@ class Registry extends Component {
                         <Formik
                             initialValues={{email: "", password: ""}}
                             validate={validate}
-                            onSubmit={(values, { setSubmitting, resetForm }) => {
+                            onSubmit={(values) => {
                                 this.registryUser(values.email,values.password)
-                                // setSubmitting(true);
                             }}
                         >
                             {({
@@ -112,8 +111,7 @@ class Registry extends Component {
                                 touched,
                                 handleChange,
                                 handleBlur,
-                                handleSubmit,
-                                isSubmitting
+                                handleSubmit
                             }) => (
                                     <form className="form__registry flex" onSubmit={handleSubmit}>
                                         {this.props.error &&
@@ -174,7 +172,7 @@ class Registry extends Component {
                                             ) : null
                                         }
                                         <div className="registryPanel__butons flex">
-                                            <button disabled={isSubmitting} type="submit">załuż konto</button>
+                                            <button type="submit">załuż konto</button>
                                             <button><Link to="/logowanie">zaloguj się</Link></button>
                                         </div>
                                     </form>

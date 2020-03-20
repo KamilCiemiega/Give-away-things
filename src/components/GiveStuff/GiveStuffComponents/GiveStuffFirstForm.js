@@ -18,7 +18,7 @@ class GiveStuffFirstForm extends Component {
                 >
                     {({ values }) => (
                         <Form>
-                            <form className="conatainer__first">
+                            <div className="conatainer__first">
                                 <label className="radio">
                                     <Field
                                         type="radio"
@@ -66,7 +66,7 @@ class GiveStuffFirstForm extends Component {
                                 </label>
                                     <button type="submit"className="conatainer__first__button">Dalej
                                 </button> 
-                            </form>
+                            </div>
                         </Form>
                     )}
                 </Formik>

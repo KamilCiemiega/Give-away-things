@@ -80,9 +80,8 @@ class LogIn extends Component {
                         <Formik
                             initialValues={{ name: "", password: "" }}
                             validate={validate}
-                            onSubmit={(values, { setSubmitting, resetForm }) => {
+                            onSubmit={(values) => {
                                 this.logInUser(values.email, values.password)
-                                // setSubmitting(true);
                             }}
                         >
                             {({
@@ -91,8 +90,7 @@ class LogIn extends Component {
                                 touched,
                                 handleChange,
                                 handleBlur,
-                                handleSubmit,
-                                isSubmitting
+                                handleSubmit
                             }) => (
                                     <form className="form__login flex" onSubmit={handleSubmit}>
                                         
@@ -138,7 +136,7 @@ class LogIn extends Component {
                                         }
                                         <div className="logInPanel__butons flex">
                                             <button><Link to="/rejestracja">załóż konto</Link></button>
-                                            <button type="submit" disabled={isSubmitting}>Zaloguj się</button>
+                                            <button type="submit" >Zaloguj się</button>
                                         </div>
                                     </form>
                                 )}
