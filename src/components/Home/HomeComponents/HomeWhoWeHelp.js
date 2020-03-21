@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withFirebase } from '../../Firebase/context';
 import SectionTite from '../../SectionTitle/SectionTitle';
 import * as actionCreators from '../../store/actions/index';
+import { throwStatement } from '@babel/types';
 
 
 class HomeWhoWeHelp extends Component {
@@ -17,19 +18,18 @@ class HomeWhoWeHelp extends Component {
     componentDidMount() {
         const ref = this.props.firebase.db.ref('foundations')
         ref.on("value", (snapshot) => {
-            // this.setState({ items: snapshot.val(), loadStatus: 'ready' });
             this.props.onLoadList(snapshot.val(),'ready')
-            // this.props.onBuildList(snapshot.val(), 'ready')
+            this.props.onBuildList(0,1)
         }, function (errorObject) {
             this.setState({ loadStatus: 'error' })
             console.log("The read failed: " + errorObject.code);
         });
     }
-    componentDidUpdate (prevProps,prevState) {
-        if (prevState.loadStatus !== this.props.loadStatus) {
-            // return this.props.onBuildList()
-        }
-    }
+    // componentDidUpdate (prevProps,prevState) {
+    //     if (prevState.loadStatus !== this.props.loadStatus) {
+    //         return this.props.onBuildList()
+    //     }
+    // }
 
     // fetchData = (name, start =0, end = 3) => {
     //     fetch(`http://localhost:3005/organizations/?fundacja=${name}&_start=${start}&_end=${end}`)
@@ -56,7 +56,9 @@ class HomeWhoWeHelp extends Component {
         return list;
     }
     organizationsList = () => {
-        const list = this.props.currentTodos.map((element, index) => {
+        const formLastValue = this.props.currentTodos[this.props.currentTodos.length / 3 + 1];
+        const objctValues = formLastValue.map(function(key,i){return formLastValue[i]})
+        const list = objctValues.map((element, index) => {
             return (
                 <div key={index} className="whowehelp__container__text__list">
                     <ul>
@@ -122,13 +124,11 @@ class HomeWhoWeHelp extends Component {
                     <button className="whowehelp__container__partners__partner" onClick={() => {
                         this.props.onActiveView(0)
                         this.props.onFundationsView(1)
+                        
                     }}>
                         <span>Fundacjom</span>
                     </button>
-                    <button className="whowehelp__container__partners__partner" onClick={() => {
-                        this.props.onActiveView(1)
-                        this.props.onOrganizationsView(4)
-                    }}>
+                    <button className="whowehelp__container__partners__partner" onClick={() => this.props.onBuildList(1,4)}>
                         <span>Organizacjom pozarządowym</span>
                     </button>
                     <button className="whowehelp__container__partners__partner" onClick={() => {
@@ -139,8 +139,8 @@ class HomeWhoWeHelp extends Component {
                     </button>
                 </div>
                 <div className="whowehelp__container__text flex">
+                    {/* {this.props.onBuildList()} */}
                     {this.foundationsList()}
-                    {this.props.loadStatus}
                     {this.props.loadStatus === "ready" && this.props.currentView === 1 && this.organizationsList()}
                     {this.props.loadStatus === "ready" && this.props.currentView === 2 && this.collectionsList()}
                     <div className="whowehelp__container__text__buttons flex">
@@ -163,7 +163,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return{
         onLoadList: (items,status) => dispatch(actionCreators.loadList(items,status)),
-        onBuildList: () => dispatch(actionCreators.buildList()),
+        onBuildList: (view,page) => dispatch(actionCreators.buildList(view,page)),
         onActiveView: (view) => dispatch(actionCreators.activeView(view)),
         onBuildButtons:(id) => dispatch(actionCreators.buildButtons(id)),
         onFundationsView:(elem) => dispatch(actionCreators.fundationsView(elem)),

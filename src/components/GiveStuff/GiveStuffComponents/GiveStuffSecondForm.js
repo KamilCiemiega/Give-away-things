@@ -25,7 +25,46 @@ class GiveStuffSecondForm extends Component {
                     {({ values }) => (
                         <Form>
                             <h2>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h2>
-                            <div className="select__box flex">
+                            <div className="select__box">
+                                <Field as="select" name="bags">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </Field>
+                                <div className="flex">
+                                    <button
+                                        className="button__first"
+                                        onClick={() => this.props.onPreviewPage(this.props.pageNr - 1)}>Wstecz
+                                    </button>
+                                    <button type="submit" className="button__second">Dalej</button>
+                                </div>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
+            </>
+        );
+    }
+}
+const mapStateToProps = state => {
+    return {
+        active: state.formsVal.active,
+        pageNr: state.formsVal.pageNr
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onSecondFormValue: (val) => dispatch(actionCreators.secondFormValue(val)),
+        onToggleClass: (val) => dispatch(actionCreators.toggleClass(val)),
+        onNextPage: (number) => dispatch(actionCreators.nextPage(number)),
+        onPreviewPage: (number) => dispatch(actionCreators.previewPage(number))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GiveStuffSecondForm);
+
+{/* <div className="select__box flex">
                                 <div
                                     className={`option__container ${this.props.active ? 'active' : null}`}>
                                     <div className={`option ${this.props.active ? 'active' : null}`}
@@ -83,33 +122,4 @@ class GiveStuffSecondForm extends Component {
                                 <div className="selected" onClick={this.toggleClass}>
                                     Liczba 60 worków
                                 </div>
-                            </div>
-                            <div className="flex">
-                                <button
-                                    className="button__first"
-                                    onClick={() => this.props.onPreviewPage(this.props.pageNr - 1)}>Wstecz
-                                </button>
-                                <button type="submit" className="button__second">Dalej</button>
-                            </div>
-                        </Form>
-                    )}
-                </Formik>
-            </>
-        );
-    }
-}
-const mapStateToProps = state => {
-    return {
-        active: state.formsVal.active,
-        pageNr: state.formsVal.pageNr
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        onSecondFormValue: (val) => dispatch(actionCreators.secondFormValue(val)),
-        onToggleClass: (val) => dispatch(actionCreators.toggleClass(val)),
-        onNextPage: (number) => dispatch(actionCreators.nextPage(number)),
-        onPreviewPage: (number) => dispatch(actionCreators.previewPage(number))
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(GiveStuffSecondForm);
+                            </div> */}

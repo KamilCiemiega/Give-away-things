@@ -1,98 +1,46 @@
 .select__box{
-    margin-top: 1%;
-    width: 400px;
-    flex-direction: column;
-    position: absolute;
-    .option__container{
+    & select {
         background: $text;
         color: $bg;
-        width: 100%;
-        max-height: 0;
-        opacity: 0;
-        transition: all .4s;
-        overflow: hidden;
-        order: 1;
-        &.active{
-            position: relative;
-            max-height: 390px;
-            width: 70px;
-            opacity: 1;
-            margin-left: 82.5%;
-        }
-        &.active + .selected::after{
-            transform: rotateX(180deg);
-            top: -6px;
-        }
-    }
-    .selected{
-        background-color: $text;
-        margin-bottom: 8px;
-        color: $bg2;
-        position: relative;
-        order: 0;
-        &::after{
-            content: "";
-            background: url(../../assets/arrow-down.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            position:absolute;
-            height: 100%;
-            width: 32px;
-            right: 10px;
-            top: 5px;
-            transition: all .4s;
-        }
-    }
-    .option,
-    .selected{
-        padding: 12px 24px;
+        padding: 15px;
+        width: 300px;
+        height: 50px;
+        font-size: 1rem;
+        border: none;
+        box-shadow: 0 5px 25px rgba(0,0,0,.5);
+        outline: none;
         cursor: pointer;
     }
-    .option{
-        text-align: center;
-        position: relative;
-        user-select: none;
-    }
-    .option:hover{
-        background: $bg2;
-        color: $text;
-        transition: all .5s;
-    }
-    & label {
+    
+    .button__first{
         cursor: pointer;
+        width: 125px;
+        height: 50px;
+        margin-top: 395px;
+        font-size: 1.1rem;
+        border: none;
+        background-color: transparent;
+        border: 0.7px solid #3C3C3C;
+        padding: 10px;
+        &:hover{
+            background:$bg2;
+            transition: .5s;
+        }
     }
-    & input {
+    .button__second{
         cursor: pointer;
+                width: 125px;
+                height: 50px;
+                margin-top: 395px;
+                margin-left: 40px;
+                font-size: 1.1rem;
+                border: none;
+                background-color: transparent;
+                border: 0.7px solid #3C3C3C;
+                padding: 10px;
+                &:hover{
+                    background:$bg2;
+                    transition: .5s;
+                }
     }
-}
-.button__first{
-    cursor: pointer;
-    width: 125px;
-    height: 50px;
-    margin-top: 440px;
-    font-size: 1.1rem;
-    border: none;
-    background-color: transparent;
-    border: 0.7px solid #3C3C3C;
-    padding: 10px;
-    &:hover{
-        background:$bg2;
-        transition: .5s;
-    }
-}
-.button__second{
-    cursor: pointer;
-            width: 125px;
-            height: 50px;
-            margin-top: 440px;
-            margin-left: 40px;
-            font-size: 1.1rem;
-            border: none;
-            background-color: transparent;
-            border: 0.7px solid #3C3C3C;
-            padding: 10px;
-            &:hover{
-                background:$bg2;
-                transition: .5s;
-            }
 }

@@ -5,32 +5,17 @@ import { withFirebase } from '../../Firebase/context';
 
 class GiveStuffSummary extends Component {
 
-    componentDidMount = () => {
-        const basket = [
-            {name: 'Klawiatura', price: 99},
-            {name: 'Komputer', price: 2990},
-            {name: 'Kabel', price: 19}
-        ];
-        const val = basket.slice(-1)[0];
-        const dataArray = Object.keys(val).map(function(k){return val[k]})
-        console.log(dataArray)
-        //tu poniżej próbowałem zrobić to samo co wyżej czyli
-        //wyciągąć ostatnio obiekt z tablicy i zwrócić same wartości tego obiektu w tablicy 
-        //ale niestety zwraca mi undifined :/ a prykład powyższy tesowy zwraca mi odpowiednie warości
-        const formLastValue =   Object.keys(this.props.fourthFormValue.slice(-1)[0]);
-        const newArr = formLastValue.map(function(i){return formLastValue[i]})
-        console.log(newArr)
-    }
-
     sendDataToFirebase = () => {
         const ref = this.props.firebase.db.ref('summary')
         ref.push(this.props.thirdFormValues)
+        this.props.onNextPage(this.props.pageNr + 1)
     }
 
     render() {
         const { selectedOption, bags, thirdFormValues, fourthFormValue } = this.props
-        const formLastValue =   Object.keys(fourthFormValue.slice(-1)[0]);
-        const newArr = formLastValue.map(function(i){return formLastValue[i]})
+        const formLastObject = Object.values(fourthFormValue[fourthFormValue.length -1] );
+        const firstColumnArr = formLastObject.slice(0,4);
+        const secondColumnArr= formLastObject.slice(4,7);
         
         return (
             <div className="summary__container flex">
@@ -67,14 +52,9 @@ class GiveStuffSummary extends Component {
                                 <span>Numer telefonu:</span>
                             </div>
                             <div className="summary__container__address__main__firstcolumn__secondelement flex">
-                                {fourthFormValue.map((item) => {
+                                {firstColumnArr.map((item) => {
                                     return (
-                                        <>
-                                            <span><strong>{item.street}</strong></span>
-                                            <span><strong>{item.city}</strong></span>
-                                            <span><strong>{item.zipCode}</strong></span>
-                                            <span><strong>{item.phoneNumber}</strong></span>
-                                        </>
+                                            <span><strong>{item}</strong></span>
                                     );
                                 })}
                             </div>
@@ -90,7 +70,11 @@ class GiveStuffSummary extends Component {
                                 <span>Uwagi dla kuriera:</span>
                             </div>
                             <div className="summary__container__address__mainsecond__secondcolumn__secondelement flex">
-                                
+                            {secondColumnArr.map((item) => {
+                                    return (
+                                            <span><strong>{item}</strong></span>
+                                    );
+                            })}
                             </div>
                         </div>
                     </div>
@@ -101,7 +85,7 @@ class GiveStuffSummary extends Component {
                         onClick={() => this.props.onPreviewPage(this.props.pageNr - 1)}>Wstecz
                     </button>
                     <button type="submit"className="summary__container__button__second" 
-                    onClick={this.sendDataToFirebase()}>Potwierdzam</button>
+                    onClick={() => this.sendDataToFirebase()}>Potwierdzam</button>
                 </div>
             </div>
         );
@@ -118,7 +102,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onPreviewPage: (number) => dispatch(actionCreators.previewPage(number))
+        onPreviewPage: (number) => dispatch(actionCreators.previewPage(number)),
+        onNextPage: (number) => dispatch(actionCreators.nextPage(number))
     }
 }
 

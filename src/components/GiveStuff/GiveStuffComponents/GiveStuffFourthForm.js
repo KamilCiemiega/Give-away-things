@@ -66,7 +66,7 @@ class GiveStuffFourth extends Component {
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.city}
-                                                    className={touched.street && errors.street ? "fourth_form_input__error" : null}
+                                                    className={touched.city && errors.city ? "fourth_form_input__error" : null}
                                                 />
                                             </div>
                                             <div className="container__fourth__form__main__first__elements flex">
@@ -77,7 +77,7 @@ class GiveStuffFourth extends Component {
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.zipCode}
-                                                    className={touched.street && errors.street ? "fourth_form_input__error" : null}
+                                                    className={touched.zipCode && errors.zipCode ? "fourth_form_input__error" : null}
                                                 />
                                             </div>
                                             <div className="container__fourth__form__main__first__elements flex">
@@ -88,7 +88,7 @@ class GiveStuffFourth extends Component {
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.phoneNumber}
-                                                    className={touched.street && errors.street ? "fourth_form_input__error" : null}
+                                                    className={touched.phoneNumber && errors.phoneNumber ? "fourth_form_input__error" : null}
                                                 />
                                             </div>
                                         </form>
@@ -104,7 +104,7 @@ class GiveStuffFourth extends Component {
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.data}
-                                                    className={touched.street && errors.street ? "fourth_form_input__error" : null}
+                                                    className={touched.data && errors.data ? "fourth_form_input__error" : null}
                                                 />
                                             </div>
                                             <div className="container__fourth__form__main__form__elements flex">
@@ -115,7 +115,7 @@ class GiveStuffFourth extends Component {
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.hour}
-                                                    className={touched.street && errors.street ? "fourth_form_input__error" : null}
+                                                    className={touched.hour && errors.hour ? "fourth_form_input__error" : null}
                                                 />
                                             </div>
                                             <div className="container__fourth__form__main__form__elemets flex">

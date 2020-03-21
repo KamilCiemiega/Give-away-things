@@ -19,12 +19,14 @@ const reducer = (state = initialState, action) => {
                 loadStatus: action.loadStatus
             }
         case actionTypes.BUILD_LIST:
-            let indexOfLastTodo = state.currentPage * state.todosPerPage;
+            let indexOfLastTodo = action.currentPage * state.todosPerPage;
             let indexOfFirstTodo = indexOfLastTodo - state.todosPerPage;
-            let currentTodos = items.slice(indexOfFirstTodo, indexOfLastTodo);
+            let currentTodos = state.items.slice(indexOfFirstTodo, indexOfLastTodo);
                 return {
                     ...state,
-                    currentTodos:state.currentTodos.concat(currentTodos)
+                    currentTodos:state.currentTodos.concat(currentTodos),
+                    currentView:action.activeView,
+                    currentPage:action.currentPage,
                 }
         case actionTypes.ACTIVE_VIEW:
             return {

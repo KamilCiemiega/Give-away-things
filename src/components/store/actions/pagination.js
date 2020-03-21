@@ -8,9 +8,11 @@ export const loadList = (items,ready) => {
     }
 }
 
-export const buildList = () => {
+export const buildList = (view,page) => {
     return {
-        type: actionTypes.BUILD_LIST
+        type: actionTypes.BUILD_LIST,
+        activeView:view,
+        currentPage:page
     }
 }
 
