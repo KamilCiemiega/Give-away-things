@@ -5,11 +5,6 @@ import * as actionCreators from '../../store/actions/index';
 
 class GiveStuffThirdForm extends Component {
 
-    toggleClass = () => {
-        const currentValue = this.props.active;
-        this.props.onToggleClass(!currentValue)
-    };
-
     render() {
         const validate = values => {
             const errors = {};
@@ -126,7 +121,11 @@ class GiveStuffThirdForm extends Component {
                                             className="third__container__button__first"
                                             onClick={() => this.props.onPreviewPage(this.props.pageNr - 1)}>Wstecz
                                     </button>
-                                        <button type="submit" className="third__container__button__second" disabled={isSubmitting}>Dalej</button>
+                                        <button 
+                                        type="submit" 
+                                        className="third__container__button__second" 
+                                        disabled={isSubmitting}>Dalej
+                                    </button>
                                     </div>
                                 </div>
                             </Form>
@@ -138,14 +137,12 @@ class GiveStuffThirdForm extends Component {
 }
 const mapStateToProps = state => {
     return {
-        active: state.formsVal.active,
         pageNr: state.formsVal.pageNr
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
         onThirdFormValue: (val) => dispatch(actionCreators.thirdFormValue(val)),
-        onToggleClass: (val) => dispatch(actionCreators.toggleClass(val)),
         onNextPage: (number) => dispatch(actionCreators.nextPage(number)),
         onPreviewPage: (number) => dispatch(actionCreators.previewPage(number))
     }

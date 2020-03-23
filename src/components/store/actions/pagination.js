@@ -8,18 +8,18 @@ export const loadList = (items,ready) => {
     }
 }
 
+export const loadListFaild = (err) => {
+    return {
+        type:actionTypes.LOAD_LIST_FAILD,
+        error: err
+    }
+}
+
 export const buildList = (view,page) => {
     return {
         type: actionTypes.BUILD_LIST,
         activeView:view,
         currentPage:page
-    }
-}
-
-export const activeView = (view) => {
-    return {
-        type:actionTypes.ACTIVE_VIEW,
-        activeView:view
     }
 }
 
@@ -30,21 +30,10 @@ export const buildButtons = (id) => {
     }
 }
 
-export const fundationsView = (elem) => {
+export const currentList = (page) => {
     return {
-        type:actionTypes.FUNDATIONS_VIEW,
-        currentPage:elem
+        type: actionTypes.CURRENT_LIST,
+        currentPage:page
     }
 }
-export const organizationsView = (elem) => {
-    return {
-        type:actionTypes.ORGANIZATIONS_VIEW,
-        currentPage:elem
-    }
-}
-export const collectionsView = (elem) => {
-    return {
-        type:actionTypes.COLLECTIONS_VIEW,
-        currentPage:elem
-    }
-}
+

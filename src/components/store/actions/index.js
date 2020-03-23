@@ -1,11 +1,8 @@
 export {
     loadList,
     buildList,
-    activeView,
     buildButtons,
-    fundationsView,
-    organizationsView,
-    collectionsView
+    currentList
 } from './pagination';
 export {
     sendData
@@ -22,7 +19,6 @@ export {
 export {
     firstFormValue,
     secondFormValue,
-    toggleClass,
     thirdFormValue,
     fourthFormValue,
     nextPage,

@@ -14,12 +14,6 @@ export const secondFormValue = (val) => {
     }
 }
 
-export const toggleClass = (val) => {
-    return {
-        type: actionTypes.TOGGLE_CLASS,
-        active: val
-    }
-}
 export const thirdFormValue = (val) => {
     return {
         type: actionTypes.THIRD_FORM_VALUE,

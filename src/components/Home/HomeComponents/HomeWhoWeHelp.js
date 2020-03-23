@@ -3,26 +3,17 @@ import { connect } from 'react-redux';
 import { withFirebase } from '../../Firebase/context';
 import SectionTite from '../../SectionTitle/SectionTitle';
 import * as actionCreators from '../../store/actions/index';
-import { throwStatement } from '@babel/types';
 
 
 class HomeWhoWeHelp extends Component {
 
-    state = {
-        loadStatus: 'init',
-        items: [],
-        currentPage: 1,
-        todosPerPage: 3,
-        currentView: 0
-    }
     componentDidMount() {
         const ref = this.props.firebase.db.ref('foundations')
         ref.on("value", (snapshot) => {
             this.props.onLoadList(snapshot.val(),'ready')
             this.props.onBuildList(0,1)
         }, function (errorObject) {
-            this.setState({ loadStatus: 'error' })
-            console.log("The read failed: " + errorObject.code);
+            this.props.onLoadListFaild(`The read failed: ${errorObject.code}`);
         });
     }
     // componentDidUpdate (prevProps,prevState) {
@@ -43,7 +34,8 @@ class HomeWhoWeHelp extends Component {
     // }
 
     foundationsList = () => {
-         const list = this.props.currentTodos.map((element, index) => {
+        const formLastValue = Object.values(this.props.currentTodos.slice(-3));
+         const list = formLastValue.map((element, index) => {
             return (
                 <div key={index} className="whowehelp__container__text__list">
                     <ul>
@@ -56,9 +48,8 @@ class HomeWhoWeHelp extends Component {
         return list;
     }
     organizationsList = () => {
-        const formLastValue = this.props.currentTodos[this.props.currentTodos.length / 3 + 1];
-        const objctValues = formLastValue.map(function(key,i){return formLastValue[i]})
-        const list = objctValues.map((element, index) => {
+        const formLastValue = Object.values(this.props.currentTodos.slice(-3));
+        const list = formLastValue.map((element, index) => {
             return (
                 <div key={index} className="whowehelp__container__text__list">
                     <ul>
@@ -71,11 +62,8 @@ class HomeWhoWeHelp extends Component {
         return list;
     }
     collectionsList = () => {
-        // const { items, currentPage, todosPerPage } = this.state;
-        // const indexOfLastTodo = currentPage * todosPerPage;
-        // const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
-        // const currentTodos = items.slice(indexOfFirstTodo, indexOfLastTodo);
-        const list = this.props.currentTodos.map((element, index) => {
+        const formLastValue = Object.values(this.props.currentTodos.slice(-3));
+        const list = formLastValue.map((element, index) => {
             return (
                 <div key={index} className="whowehelp__container__text__list">
                     <ul>
@@ -91,56 +79,40 @@ class HomeWhoWeHelp extends Component {
     buildButtons = () => {
         let foundationsButtons = [];
         for (let i = 1; i <= 3; i++) {
-            foundationsButtons.push(<button key={i} id={i} onClick={this.handleClick} className="whowehelp__button">{i}</button>)
+            foundationsButtons.push(<button key={i} id={i}  index={0} onClick={this.handleClick} className="whowehelp__button">{i}</button>)
         }
         let organizationsButtons = [];
         for (let i = 1; i <= 2; i++) {
             const id = i + 3
-            organizationsButtons.push(<button key={i} id={id} onClick={this.handleClick} className="whowehelp__button">{i}</button>)
+            organizationsButtons.push(<button key={i} id={id} index={1} onClick={this.handleClick} className="whowehelp__button">{i}</button>)
         }
         if (this.props.currentView === 0) return foundationsButtons
         if (this.props.currentView === 1) return organizationsButtons
     }
 
-    // foundationsView = () => {
-    //     this.setState({ currentPage: 1 })
-    // }
-    // organizationsView = () => {
-    //     this.setState({ currentPage: 4 })
-    // }
-    // colleciomsView = () => {
-    //     this.setState({ currentPage: 6 })
-    // }
     handleClick = (e) => {
-        return this.props.onBuildButtons(e.target.id)
+        this.props.onBuildButtons(e.target.id)
+        this.props.onCurrentList(e.target.id)
     }
    
-
     render() {
         return (
             <div className="whowehelp__container flex">
                 <SectionTite>Komu pomagamy?</SectionTite>
                 <div className="whowehelp__container__partners flex">
-                    <button className="whowehelp__container__partners__partner" onClick={() => {
-                        this.props.onActiveView(0)
-                        this.props.onFundationsView(1)
-                        
-                    }}>
+                    <button className="whowehelp__container__partners__partner" onClick={() =>  this.props.onBuildList(0,1)}>
                         <span>Fundacjom</span>
                     </button>
                     <button className="whowehelp__container__partners__partner" onClick={() => this.props.onBuildList(1,4)}>
                         <span>Organizacjom pozarządowym</span>
                     </button>
-                    <button className="whowehelp__container__partners__partner" onClick={() => {
-                        this.props.onActiveView(2)
-                        this.props.oncollectionsView(6)
-                    }}>
+                    <button className="whowehelp__container__partners__partner" onClick={() => this.props.onBuildList(2,6)}>
                         <span>Lokalnym zbiórkom</span>
                     </button>
                 </div>
                 <div className="whowehelp__container__text flex">
-                    {/* {this.props.onBuildList()} */}
-                    {this.foundationsList()}
+                    {this.props.error}
+                    {this.props.loadStatus === "ready" && this.props.currentView === 0 && this.foundationsList()}
                     {this.props.loadStatus === "ready" && this.props.currentView === 1 && this.organizationsList()}
                     {this.props.loadStatus === "ready" && this.props.currentView === 2 && this.collectionsList()}
                     <div className="whowehelp__container__text__buttons flex">
@@ -155,20 +127,18 @@ const mapStateToProps = state => {
     return {
         currentTodos:state.pag.currentTodos,
         loadStatus:state.pag.loadStatus,
-        currentView:state.pag.currentView,
-        items:state.pag.items
+        error:state.pag.error,
+        currentView:state.pag.currentView
     } 
 }
 
 const mapDispatchToProps = dispatch => {
     return{
         onLoadList: (items,status) => dispatch(actionCreators.loadList(items,status)),
+        onLoadListFaild: (err) => dispatch(),
         onBuildList: (view,page) => dispatch(actionCreators.buildList(view,page)),
-        onActiveView: (view) => dispatch(actionCreators.activeView(view)),
         onBuildButtons:(id) => dispatch(actionCreators.buildButtons(id)),
-        onFundationsView:(elem) => dispatch(actionCreators.fundationsView(elem)),
-        onOrganizationsView:(elem) => dispatch(actionCreators.organizationsView(elem)),
-        oncollectionsView:(elem) => dispatch(actionCreators.collectionsView(elem))
+        onCurrentList:(id) => dispatch(actionCreators.currentList(id))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withFirebase(HomeWhoWeHelp));
