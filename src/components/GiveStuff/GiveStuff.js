@@ -9,9 +9,6 @@ import GiveStuffConfirm from './GiveStuffComponents/GiveStuffConfirm';
 import { connect } from 'react-redux';
 
 class GiveStuff extends Component {
-    state = {
-        pageNr: 1
-    }
 
     warningDescription = () => {
         switch (this.props.pageNr) {
