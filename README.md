@@ -1,14 +1,14 @@
 Projekt jest prostą stroną internetową, mającą na celu umożliwienie urzytkownikowi oddania niepotrzebnych rzeczy.
 
-DEMO APLIKACJI
+#### DEMO APLIKACJI
 
 https://give-away-things-b4399.web.app/#/
 
-UŻYTE TECHNOLOGIE
+#### UŻYTE TECHNOLOGIE
 
-![technology](https://user-images.githubusercontent.com/55457173/81511267-63bc3b80-9318-11ea-8757-2740dd7b0613.png)
+![technology](https://user-images.githubusercontent.com/55457173/81610991-a1819880-93da-11ea-9835-642251b07fd5.png)
 
-PREZENTACJA
+#### PREZENTACJA
 
 Przy pomocy firebase z wykorzystaniem Realtime Database pobierana jest tablica z danymi.
 
