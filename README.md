@@ -20,7 +20,8 @@ Local Collections: one page, pagination is hidden.
 
 ![pagination](https://user-images.githubusercontent.com/55457173/81607438-fa4e3280-93d4-11ea-929e-610494acaa7b.gif)
 
-Form validation is done using Formik. After correctly filling out the form, the data is sent via a POST method as JSON to the endpoint: https://fer-api.coderslab.pl/v1/portfolio/contact.
+Form validation is done using Formik. After correctly filling out the form, the data is sent via a POST method as JSON to the endpoint: https://fer-api.coderslab.pl/v1/portfolio/contact
+
 
 ![form](https://user-images.githubusercontent.com/55457173/81607493-1225b680-93d5-11ea-9942-7c252d87de2c.gif)
 
