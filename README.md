@@ -1,35 +1,35 @@
-Projekt jest prostą stroną internetową, mającą na celu umożliwienie urzytkownikowi oddania niepotrzebnych rzeczy.
+The project is a simple website aimed at allowing users to donate unnecessary items.
 
-#### DEMO APLIKACJI
+#### APPLICATION DEMO
 
 https://give-away-things-b4399.web.app/#/
 
-#### UŻYTE TECHNOLOGIE
+#### TECHNOLOGIES USED
 
 ![technology](https://user-images.githubusercontent.com/55457173/81610991-a1819880-93da-11ea-9835-642251b07fd5.png)
 
-#### PREZENTACJA
+#### PRESENTATION
 
-Przy pomocy firebase z wykorzystaniem Realtime Database pobierana jest tablica z danymi.
+Using Firebase with Realtime Database, an array of data is retrieved.
 
-Po kliknięciu w odpowiedni przycisk (Fundacjom, Organizacjom pozarządowym, Lokalnym zbiórkom) - jest zmieniana treść pod nimi.
+When clicking the appropriate button (Foundations, Non-governmental Organizations, Local Collections) - the content below them changes.
 
-Fundacje: 3 strony po 3 wpisy
-Organizacje pozarządowe: 2 strony po 3 wpisy
-Lokalne zbiórki: jedna strona paginacja zostaje ukryta.
+Foundations: 3 pages with 3 entries each
+Non-governmental Organizations: 2 pages with 3 entries each
+Local Collections: one page, pagination is hidden.
 
 ![pagination](https://user-images.githubusercontent.com/55457173/81607438-fa4e3280-93d4-11ea-929e-610494acaa7b.gif)
 
-Walidacja formularza odbywa się przy pomocy formika, po porawnym uzupełnieniu formularza dane wysyłane są metodą POST jako JSON do endpointu: https://fer-api.coderslab.pl/v1/portfolio/contact.
+Form validation is done using Formik. After correctly filling out the form, the data is sent via a POST method as JSON to the endpoint: https://fer-api.coderslab.pl/v1/portfolio/contact.
 
 ![form](https://user-images.githubusercontent.com/55457173/81607493-1225b680-93d5-11ea-9942-7c252d87de2c.gif)
 
-Możliwość rejsetracji,logowania,wylogowania z wykorzystaniem Firebase Authentication.
+The application supports registration, login, and logout using Firebase Authentication.
 
-Po poprawnej autoryzacji użytkownik zostaje przekierowany do strony głównej ze zmienionym nagłówkiem dającym możliwość przejścia do formularza "Oddaj rzeczy" czy wylogowania.
+After successful authentication, the user is redirected to the homepage with a modified header, allowing them to navigate to the "Donate Items" form or log out.
 
 ![logIn](https://user-images.githubusercontent.com/55457173/81607547-249ff000-93d5-11ea-90e5-62f96b245643.gif)
 
- Przejście do formularza "Oddaj rzeczy" jest możliwe po prawidłowym zalogowaniu się lub zarejestrowaniu.Formularz składa sięz 4 kroków,pomiędzy którymi możemy się przemieszczać z wykorzysaniem przysików Dalej,Wstecz.Na końcu pokazuje nam się podsumowanie.Po kliknięciu przycisku potwiedzam dane z formularzy wysyłane są do firebase.
+Navigating to the "Donate Items" form is possible after proper login or registration. The form consists of 4 steps, between which the user can navigate using the Next and Back buttons. At the end, a summary is shown. After clicking the confirm button, the data from the forms is sent to Firebase.
  
 ![giveStuff](https://user-images.githubusercontent.com/55457173/81607677-587b1580-93d5-11ea-89b5-9414b3296075.gif) 
